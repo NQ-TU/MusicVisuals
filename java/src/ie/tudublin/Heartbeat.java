@@ -60,7 +60,7 @@ public class Heartbeat extends Visual {
                 noelsVisual.render(this);
                 break;
             case 2:
-                PatricksVisuals.render(this);
+                //PatricksVisuals.render(this);
                 break;
             default:
                 break;
