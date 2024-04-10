@@ -1,5 +1,6 @@
 package ie.tudublin;
 
+import C21325616.MichaelsVisuals;
 import C22533826.NoelsVisual;
 import c22371846.PatricksVisuals;
 import ddf.minim.AudioBuffer;
@@ -10,13 +11,15 @@ import processing.core.PApplet;
 
 public class Heartbeat extends Visual {
 
-    int mode = 0;
+    int mode = 3;
     NoelsVisual noelsVisual;
+
     PatricksVisuals PatricksVisuals;
     Minim minim;
     AudioPlayer ap;
     AudioInput ai;
     AudioBuffer ab;
+    MichaelsVisuals michaelsVisuals;
 
     public void settings() {
         // size(800, 800, P3D);
@@ -47,11 +50,15 @@ public class Heartbeat extends Visual {
         // noCursor();
         setFrameSize(256);
         startMinim();
-        loadAudio("Heartbeat.mp3");
+        loadAudio("/Users/michaelferents/Desktop/OOPAssignment/MusicVisuals/java/data/Heartbeat.mp3");
         getAudioPlayer().play();
         // startListening();
         noelsVisual = new NoelsVisual();
+
         PatricksVisuals = new PatricksVisuals();
+
+        michaelsVisuals = new MichaelsVisuals(this);
+
     }
 
     public void draw() {
@@ -62,9 +69,10 @@ public class Heartbeat extends Visual {
             case 2:
                 PatricksVisuals.draw();
                 break;
+            case 3:
+                michaelsVisuals.testRender();
             default:
                 break;
         }
     }
-
 }
