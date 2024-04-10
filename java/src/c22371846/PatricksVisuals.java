@@ -16,11 +16,9 @@ public class PatricksVisuals extends PApplet
     AudioPlayer ap;
     AudioInput ai;
     AudioBuffer ab;
-    Visual V;
     FFT fft;
 
     int mode = 0;
-    float separated = 10;
     float[] lerpedBuffer;
 
     public void settings()
@@ -67,21 +65,20 @@ public class PatricksVisuals extends PApplet
         }
 	}
 
-    float smoothedBoxSize = 0;
-    float off = 0;
-
     public void draw()
 	{
+        float separated = 10;
         float sum = 0;
+        float off = 0;
         float average = 0;
         float smoothedAmplitude = 0;
-        float bar_values = 30;
-        float w = width / separated;
+        int bar_values = (int) (mouseX / 20.0f);
+        float w = width / (float) bar_values;
         float h = height / separated;
         float H = height / 2;
         float W = width / 2;
 
-        for(int i = 0 ; i < ab.size() ; i ++)
+        for(int i = 0 ; i < ab.size(); i ++)
         {
             sum += abs(ab.get(i));
             lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.05f);
@@ -90,24 +87,24 @@ public class PatricksVisuals extends PApplet
 
         smoothedAmplitude = lerp(smoothedAmplitude, average, 0.75f);
 
+        fft.forward(ab);
+
+        int maxFFTIndex = 0;
+        for(int i = 0 ; i < fft.specSize() /2  ; i ++)
+        {
+            if (fft.getBand(i) > fft.getBand(maxFFTIndex))
+            {
+                maxFFTIndex = i;
+            }
+        }
+        float freq = fft.indexToFreq(maxFFTIndex);
+
 		switch (mode)
 		{
 			case 0:
 			{
+                off += 10;
                 background(0);
-                off += 1;
-
-                fft.forward(ab);
-
-                int maxFFTIndex = 0;
-                for(int i = 0 ; i < fft.specSize() /2  ; i ++)
-                {
-                    if (fft.getBand(i) > fft.getBand(maxFFTIndex))
-                    {
-                        maxFFTIndex = i;
-                    }
-                }
-                float freq = fft.indexToFreq(maxFFTIndex);
                 text("Frequencies: " + freq, width - 300, height - 50);
 
                 //bar values
@@ -116,62 +113,52 @@ public class PatricksVisuals extends PApplet
 					float num = 50;
                     float f = lerpedBuffer[i] * H * 4.0f;
 					float x = map(num * i, width - 450, width, num, width);
-                    int c = (int)map(i, 0, 25, 0, 255);
-                    int cc = c * i;
-                    fill((cc + off) % 256, mouseY, mouseX);
-                    rect(x + 50, 0, w, f * h * 0.1F);
+                    float c = map((off), 0, 200, 0, 255);
+                    float cc = c * i;
+                    fill(cc % 256, 255, 255);
+                    rect(x, 0, w, f * h * 0.15F);
+                    noStroke();
 				}
 
-                for (int i = 0; i < bar_values; i++) 
+                for (int i = 0; i < 20; i++) 
                 {
-                    text(i * 50, 25, (i * 50) + 50);
+                    text(i * 50, 25, (i * 50) + 10);
                 }
 				break;
 			}
             case 1:
-            {
-                background((off) % 256);
-                off += 1;
-
-                fft.forward(ab);
-
-                int maxFFTIndex = 0;
-                for(int i = 0 ; i < fft.specSize() /2  ; i ++)
+            {   
+                off+=10;
+                background((off) % 256, mouseX);
+                for(int i = 0 ; i < fft.specSize() / 2; i ++)
                 {
-                    int c = (int)map(i, 0, 25, 0, 1000);
-                    int cc = c * i;
+                    float c = map(i, 0, ab.size(), 0, 255);
+                    float cc = c * i;
                     translate(100, 0, 0);
                     rotateY(angle);
                     rotateX(angle);
-
-                    if (fft.getBand(i) > fft.getBand(maxFFTIndex))
-                    {
-                        maxFFTIndex = i;
-                    }
-
                     if (keyCode == LEFT) 
                     {
                         square(W, H, lerp(0, smoothedAmplitude, (fft.getBand(i) * 100)));
-                        fill((cc + off) % 500, mouseY, mouseX);
+                        fill((cc + off) % 256, mouseX, 255);
                     }
 
                     if (keyCode == RIGHT) 
                     {
-                        //triangle(W, H, (fft.getBand(i) * 6));
-                        //fill((cc + off) % 500, mouseY, mouseX);
+                        triangle(W, H, H, H, i, (fft.getBand(i)));
+                        fill((cc + off) % 256, mouseX, 255);                    
                     }
 
                     if (keyCode == UP) {
                         circle(W, H, (fft.getBand(i) * 6));
-                        fill((cc + off) % 500, mouseY, mouseX);
+                        fill((cc + off) % 256, mouseX, 255);
+                                            
                     }
 
                     if (keyCode == DOWN) {
                         box((fft.getBand(i) * 3));
-                        fill((cc + off) % 500, mouseY, mouseX);
-                        stroke((off) % 256, mouseY);
+                        fill((cc + off) % 256, mouseX, 255);                    
                     }
-                    
                 }
                 angle += 0.01f;
 				break;
