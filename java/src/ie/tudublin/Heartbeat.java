@@ -2,12 +2,23 @@ package ie.tudublin;
 
 import C21325616.MichaelsVisuals;
 import C22533826.NoelsVisual;
+import c22371846.PatricksVisuals;
+import ddf.minim.AudioBuffer;
+import ddf.minim.AudioInput;
+import ddf.minim.AudioPlayer;
+import ddf.minim.Minim;
 import processing.core.PApplet;
 
 public class Heartbeat extends Visual {
 
     int mode = 3;
     NoelsVisual noelsVisual;
+
+    PatricksVisuals PatricksVisuals;
+    Minim minim;
+    AudioPlayer ap;
+    AudioInput ai;
+    AudioBuffer ab;
     MichaelsVisuals michaelsVisuals;
 
     public void settings() {
@@ -15,6 +26,24 @@ public class Heartbeat extends Visual {
         println("CWD: " + System.getProperty("user.dir"));
         fullScreen(P3D, SPAN);
     }
+
+    public void keyPressed() {
+		if (key >= '0' && key <= '9') 
+        {
+			mode = key - '0';
+		}
+		if (keyCode == ' ') {
+            if (ap.isPlaying()) 
+            {
+                ap.pause();
+            } 
+            else 
+            {
+                ap.rewind();
+                ap.play();
+            }
+        }
+	}
 
     public void setup() {
         colorMode(HSB);
@@ -25,7 +54,11 @@ public class Heartbeat extends Visual {
         getAudioPlayer().play();
         // startListening();
         noelsVisual = new NoelsVisual();
+
+        PatricksVisuals = new PatricksVisuals();
+
         michaelsVisuals = new MichaelsVisuals(this);
+
     }
 
     public void draw() {
@@ -34,7 +67,7 @@ public class Heartbeat extends Visual {
                 noelsVisual.render(this);
                 break;
             case 2:
-                // PatricksVisuals.render();
+                PatricksVisuals.draw();
                 break;
             case 3:
                 michaelsVisuals.testRender();
