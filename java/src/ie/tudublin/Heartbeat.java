@@ -2,44 +2,72 @@ package ie.tudublin;
 
 import C21325616.MichaelsVisuals;
 import C22533826.NoelsVisual;
-import processing.core.PApplet;
 
 public class Heartbeat extends Visual {
 
-    int mode = 3;
+    int mode = 0;
     NoelsVisual noelsVisual;
     MichaelsVisuals michaelsVisuals;
 
-    public void settings() {
-        // size(800, 800, P3D);
-        println("CWD: " + System.getProperty("user.dir"));
-        fullScreen(P3D, SPAN);
-    }
-
     public void setup() {
         colorMode(HSB);
-        // noCursor();
-        setFrameSize(256);
+        setFrameSize(512);
         startMinim();
-        loadAudio("/Users/michaelferents/Desktop/OOPAssignment/MusicVisuals/java/data/Heartbeat.mp3");
+        loadAudio("Heartbeat.mp3");
         getAudioPlayer().play();
         // startListening();
-        noelsVisual = new NoelsVisual();
+        // noCursor();
+
+        noelsVisual = new NoelsVisual(this);
         michaelsVisuals = new MichaelsVisuals(this);
     }
 
+    public void settings() {
+        fullScreen(P3D, SPAN);
+        // size(1024, 768, P3D);
+        println("CWD: " + System.getProperty("user.dir"));
+    }
+
     public void draw() {
+
         switch (mode) {
             case 0:
-                noelsVisual.render(this);
+                noelsVisual.render();
                 break;
-            case 2:
+            case 1:
                 // PatricksVisuals.render();
                 break;
-            case 3:
+            case 2:
                 michaelsVisuals.testRender();
+                break;
+            case 3:
+                // Larina .render();
+                break;
             default:
                 break;
         }
     }
+
+    public void keyPressed() {
+        // Pauses playback of the song
+        if (key == ' ') {
+            if (getAudioPlayer().isPlaying()) {
+                getAudioPlayer().pause();
+            } else {
+                getAudioPlayer().play();
+            }
+        }
+
+        // Uses mode variable to switch between visuals
+        if (keyCode >= '0' && keyCode <= '3') {
+            mode = keyCode - '0';
+        }
+
+        // Restarts the song
+        if (key == 'r') {
+            getAudioPlayer().cue(0);
+            getAudioPlayer().play();
+        }
+    }
+
 }

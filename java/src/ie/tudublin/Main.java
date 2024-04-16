@@ -1,14 +1,6 @@
 package ie.tudublin;
 
-import c22371846.PatricksVisuals;
-import example.*;
-import C22533826.NoelsVisual;
-import example.CubeVisual;
-import example.CubeVisual1;
-import example.MyVisual;
-import example.RotatingAudioBands;
-
-// Test - Michael 
+import ie.tudublin.Heartbeat;
 
 public class Main {
 
