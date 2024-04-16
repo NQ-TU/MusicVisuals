@@ -145,7 +145,7 @@ public class PatricksVisuals extends PApplet
 
                     if (keyCode == RIGHT) 
                     {
-                        triangle(W, H, H, H, i, (fft.getBand(i)));
+                        triangle(W, H, H, H, W, (fft.getBand(i)));
                         fill((cc + off) % 256, mouseX, 255);                    
                     }
 
