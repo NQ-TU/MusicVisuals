@@ -16,12 +16,11 @@ public class Heartbeat extends Visual {
     float[] lerpedBuffer;
     NoelsVisual noelsVisual;
     MichaelsVisuals michaelsVisuals;
-    PatricksVisuals patricksVisuals;
-    AudioPlayer ap;
+    PatricksVisuals PatricksVisuals;
     Minim minim;
+    AudioPlayer ap;
     AudioInput ai;
     AudioBuffer ab;
-    FFT fft;
 
     public void settings() {
         // size(800, 800, P3D);
@@ -57,19 +56,8 @@ public class Heartbeat extends Visual {
         //getAudioPlayer().play();
         // startListening();
         noelsVisual = new NoelsVisual();
-        patricksVisuals = new PatricksVisuals();
-
-        minim = new Minim(this);
-        // Microphone
-        //ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
-        //ab = ai.mix; 
-
-        //Music
-        ap = minim.loadFile("heroplanet.mp3", 1024);
-        ap.play();
-        fft = new FFT(width, 44100);
-
-        lerpedBuffer = new float[width];
+        michaelsVisuals = new MichaelsVisuals(this);
+        PatricksVisuals = new PatricksVisuals();
     }
 
     public void draw() {
@@ -78,7 +66,7 @@ public class Heartbeat extends Visual {
                 noelsVisual.render(this);
                 break;
             case 2:
-                patricksVisuals.draw();
+                //patricksVisuals.draw();
                 break;
             case 3:
                 michaelsVisuals.testRender();
