@@ -23,7 +23,7 @@ public class Heartbeat extends Visual {
     AudioBuffer ab;
 
     public void settings() {
-        // size(800, 800, P3D);
+        //size(800, 800, P3D);
         println("CWD: " + System.getProperty("user.dir"));
         fullScreen(P3D, SPAN);
         size(1024, 800, P3D);
@@ -50,11 +50,11 @@ public class Heartbeat extends Visual {
     public void setup() {
         colorMode(HSB);
         // noCursor();
-        setFrameSize(256);
+        setFrameSize(512);
         startMinim();
-        //loadAudio("/Users/michaelferents/Desktop/OOPAssignment/MusicVisuals/java/data/Heartbeat.mp3");
-        //getAudioPlayer().play();
-        // startListening();
+        loadAudio("/Users/michaelferents/Desktop/OOPAssignment/MusicVisuals/java/data/Heartbeat.mp3");
+        getAudioPlayer().play();
+        startListening();
         noelsVisual = new NoelsVisual();
         michaelsVisuals = new MichaelsVisuals(this);
         PatricksVisuals = new PatricksVisuals();
