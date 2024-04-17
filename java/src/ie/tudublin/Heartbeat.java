@@ -108,9 +108,7 @@ public class Heartbeat extends Visual {
 //                 //patricksVisuals.draw();
                 break;
             case 2:
-                //patricksVisuals.draw(this);
-                michaelsVisuals.testRender();
-                break;
+                michaelsVisuals.render();
             case 3:
                 // Larina .render();
             case 4:
