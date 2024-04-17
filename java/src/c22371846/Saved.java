@@ -1,11 +1,36 @@
 package c22371846;
 
-public class Saved {
-    
+import ddf.minim.AudioBuffer;
+import ddf.minim.AudioInput;
+import ddf.minim.AudioPlayer;
+import ddf.minim.Minim;
+import processing.core.PApplet;
+import ddf.minim.analysis.FFT;
+import ie.tudublin.Visual;
+
+
+
+public class PatricksVisuals extends PApplet
+{
+    Minim minim;
+    AudioPlayer ap;
+    AudioInput ai;
+    AudioBuffer ab;
+    FFT fft;
+
+    int mode = 0;
+    float[] lerpedBuffer;
+
+    public void settings()
+    {
+        size(1024, 800, P3D);
+        //fullScreen(P3D, SPAN);
+    }
+
     public void setup()
     {
-        HB.colorMode(HB.HSB);
-        HB.background(0);
+        colorMode(HSB);
+        background(0);
         minim = new Minim(this);
         // Microphone
         //ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
@@ -15,32 +40,52 @@ public class Saved {
         ap = minim.loadFile("heroplanet.mp3", 1024);
         ap.play();
         ab = ap.mix;
-        fft = new FFT(HB.width, 44100);
+        fft = new FFT(width, 44100);
 
-        lerpedBuffer = new float[HB.width];
+        lerpedBuffer = new float[width];
     }
 
-    public void render()
+    public void keyPressed() 
+    {
+		if (key >= '0' && key <= '9') 
+        {
+			mode = key - '0';
+		}
+		if (keyCode == ' ') 
+        {
+            if (ap.isPlaying()) 
+            {
+                ap.pause();
+            } 
+            else 
+            {
+                ap.rewind();
+                ap.play();
+            }
+        }
+	}
+
+    public void draw()
 	{
         float separated = 10;
         float sum = 0;
         float off = 0;
         float average = 0;
         float smoothedAmplitude = 0;
-        int bar_values = (int) (HB.mouseX / 20.0f);
-        float w = HB.width / (float) bar_values;
-        float h = HB.height / separated;
-        float H = HB.height / 2;
-        float W = HB.width / 2;
+        int bar_values = (int) (mouseX / 20.0f);
+        float w = width / (float) bar_values;
+        float h = height / separated;
+        float H = height / 2;
+        float W = width / 2;
 
         for(int i = 0 ; i < ab.size(); i ++)
         {
-            sum += (ab.get(i));
-            lerpedBuffer[i] = HB.lerp(lerpedBuffer[i], ab.get(i), 0.05f);
+            sum += abs(ab.get(i));
+            lerpedBuffer[i] = lerp(lerpedBuffer[i], ab.get(i), 0.05f);
         }
         average = sum / (float) ab.size();
 
-        smoothedAmplitude = HB.lerp(smoothedAmplitude, average, 0.75f);
+        smoothedAmplitude = lerp(smoothedAmplitude, average, 0.75f);
 
         fft.forward(ab);
 
@@ -59,61 +104,60 @@ public class Saved {
 			case 0:
 			{
                 off += 10;
-                HB.background(0);
-                HB.text("Frequencies: " + freq, HB.width - 300, HB.height - 50);
+                background(0);
+                text("Frequencies: " + freq, width - 300, height - 50);
 
                 //bar values
 				for (int i = 1; i < ab.size(); i++) 
 				{
 					float num = 50;
                     float f = lerpedBuffer[i] * H * 4.0f;
-					float x = HB.map(num * i, HB.width - 450, HB.width, num, HB.width);
-                    float c = HB.map((off), 0, 200, 0, 255);
+					float x = map(num * i, width - 450, width, num, width);
+                    float c = map((off), 0, 200, 0, 255);
                     float cc = c * i;
-                    HB.fill(cc % 256, 255, 255);
-                    HB.rect(x, 0, w, f * h * 0.15F);
-                    HB.noStroke();
+                    fill(cc % 256, 255, 255);
+                    rect(x, 0, w, f * h * 0.15F);
+                    noStroke();
 				}
 
                 for (int i = 0; i < 20; i++) 
                 {
-                    HB.text(i * 50, 25, (i * 50) + 10);
+                    text(i * 50, 25, (i * 50) + 10);
                 }
 				break;
 			}
             case 1:
             {   
                 off+=10;
-                HB.background((off) % 256, HB.mouseX);
+                background((off) % 256, mouseX);
                 for(int i = 0 ; i < fft.specSize() / 2; i ++)
                 {
-                    float c = HB.map(i, 0, ab.size(), 0, 255);
+                    float c = map(i, 0, ab.size(), 0, 255);
                     float cc = c * i;
-                    HB.translate(100, 0, 0);
-                    HB.rotateY(angle);
-                    HB.rotateX(angle);
-                    if (HB.keyCode == HB.LEFT) 
+                    translate(100, 0, 0);
+                    rotateY(angle);
+                    rotateX(angle);
+                    if (keyCode == LEFT) 
                     {
-                        HB.square(W, H, HB.lerp(0, smoothedAmplitude, (fft.getBand(i) * 100)));
-                        HB.fill((cc + off) % 256, HB.mouseX, 255);
+                        square(W, H, lerp(0, smoothedAmplitude, (fft.getBand(i) * 100)));
+                        fill((cc + off) % 256, mouseX, 255);
                     }
 
-                    if (HB.keyCode == HB.RIGHT) 
+                    if (keyCode == RIGHT) 
                     {
-                        HB.triangle(W, H, H, H, W, (fft.getBand(i)));
-                        HB.fill((cc + off) % 256, HB.mouseX, 255);                    
-                    } 
+                        triangle(W, H, H, H, i, (fft.getBand(i)));
+                        fill((cc + off) % 256, mouseX, 255);                    
+                    }
 
-                    if (HB.keyCode == HB.UP) {
-                        HB.circle(W, H, (fft.getBand(i) * 6));
-                        HB.fill((cc + off) % 256, HB.mouseX, 255);
+                    if (keyCode == UP) {
+                        circle(W, H, (fft.getBand(i) * 6));
+                        fill((cc + off) % 256, mouseX, 255);
                                             
                     }
 
-                    if (HB.keyCode == HB.DOWN) {
-                        HB.box((fft.getBand(i) * 3));
-                        HB.fill((cc + off) % 256, HB.mouseX, 255);   
-                        HB.stroke(0);                 
+                    if (keyCode == DOWN) {
+                        box((fft.getBand(i) * 3));
+                        fill((cc + off) % 256, mouseX, 255);                    
                     }
                 }
                 angle += 0.01f;
@@ -122,5 +166,4 @@ public class Saved {
         }
     }
     float angle = 0;
-}
 }
