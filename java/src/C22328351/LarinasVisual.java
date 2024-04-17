@@ -81,9 +81,11 @@ public class LarinasVisual extends PApplet{
         rotateX(rotX);
         rotateY(rotY);
 
-        float rotationSpeed = map(getAmplitude(), 0, 1, 0.02f, 0.1f);
-        rotX += rotationSpeed;
-        rotY += rotationSpeed * 0.5f; 
+        float rotationSpeedX = map(getAmplitude(), 0, 1, 0.02f, 0.1f);
+        float rotationSpeedY = map(getAmplitude(), 0, 1, 0.02f, 0.05f);
+
+        rotX += rotationSpeedX;
+        rotY += rotationSpeedY;
 
         //Map the frame count to create the different colours
         float hue = map(getAmplitude(), 0, 1, 0, 360);
