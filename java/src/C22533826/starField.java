@@ -9,6 +9,7 @@ import java.util.ArrayList;
 // 2. Change to add depth/more colors. -Not attempted yet. (create a nebula affect, where the stars are in a galaxy with stronger/faster pulls towards the center.)
 // 3. Add comments to explain the code better for github. -Can be worked on.
 // 4. Need to refactor render to better fit program/make better use of OOP principles. -Needs to be worked on.
+// 5. Add a way to interact with the stars. (potentially planets/hearts/ship idea).
 
 public class starField {
 
@@ -17,7 +18,7 @@ public class starField {
     Heartbeat HB;
 
     int numPoints = 2000;
-    float noiseScalar = 0.01f; // Adjust the angle step for smoother transition.
+    float noiseScalar = 0.05f; // Adjust the angle step for smoother transition.
 
     // Create an arraylist of particles.
     ArrayList<PVector> particles;
@@ -27,8 +28,6 @@ public class starField {
         this.visWidth = width;
         this.HB = HB;
 
-        ArrayList<PVector> particles;
-        int numPoints = 2000; // Number of particles to render.
         // init_particles();
     }
 
