@@ -1,18 +1,12 @@
 package ie.tudublin;
 
-import C21325616.MichaelsVisuals;
-import c22371846.*;
-import example.*;
-import C21325616.*;
-import C22533826.*;
-
-// Test - Michael 
+import ie.tudublin.Heartbeat;
 
 public class Main {
 
     public void startUI() {
         String[] a = { "MAIN" };
-        processing.core.PApplet.runSketch(a, new PatricksVisuals());
+        processing.core.PApplet.runSketch(a, new Heartbeat());
     }
 
     public static void main(String[] args) 
