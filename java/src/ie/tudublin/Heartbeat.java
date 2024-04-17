@@ -3,7 +3,7 @@ package ie.tudublin;
 import C21325616.MichaelsVisuals;
 import C22533826.NoelsVisual;
 import c22371846.PatricksVisuals;
-import C22328351.LarinasVisual;
+//import C22328351.LarinasVisual;
 import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
@@ -18,7 +18,7 @@ public class Heartbeat extends Visual {
     NoelsVisual noelsVisual;
     MichaelsVisuals michaelsVisuals;
     PatricksVisuals PatricksVisuals;
-    LarinasVisual LarinasVisual;
+    //LarinasVisual LarinasVisual;
     Minim minim;
     AudioPlayer ap;
     AudioInput ai;
@@ -60,7 +60,7 @@ public class Heartbeat extends Visual {
         noelsVisual = new NoelsVisual();
         michaelsVisuals = new MichaelsVisuals(this);
         PatricksVisuals = new PatricksVisuals();
-        LarinasVisual = new LarinasVisual();
+        //LarinasVisual = new LarinasVisual();
     }
 
     public void draw() {
@@ -74,7 +74,7 @@ public class Heartbeat extends Visual {
             case 3:
                 michaelsVisuals.testRender();
             case 4:
-                LarinasVisual.draw();
+                //LarinasVisual.draw();
                 break;
             default:
                 break;

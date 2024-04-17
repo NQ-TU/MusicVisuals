@@ -147,7 +147,7 @@ public class PatricksVisuals extends PApplet
                     {
                         triangle(W, H, H, H, W, (fft.getBand(i)));
                         fill((cc + off) % 256, mouseX, 255);                    
-                    }
+                    } 
 
                     if (keyCode == UP) {
                         circle(W, H, (fft.getBand(i) * 6));
@@ -157,7 +157,8 @@ public class PatricksVisuals extends PApplet
 
                     if (keyCode == DOWN) {
                         box((fft.getBand(i) * 3));
-                        fill((cc + off) % 256, mouseX, 255);                    
+                        fill((cc + off) % 256, mouseX, 255);   
+                        stroke(0);                 
                     }
                 }
                 angle += 0.01f;
