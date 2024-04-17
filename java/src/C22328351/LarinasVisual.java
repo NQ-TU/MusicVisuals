@@ -15,9 +15,9 @@ public class LarinasVisual extends PApplet{
     int points = 5;
 
     //Audio library objects
-    //Minim minim;
-    //AudioPlayer ap;
-    //AudioBuffer ab;
+    Minim minim;
+    AudioPlayer ap;
+    AudioBuffer ab;
 
     //int mode = 0;
 
@@ -32,17 +32,18 @@ public class LarinasVisual extends PApplet{
     {
         //Color mode and rotation variables
         colorMode(HSB, 360, 100, 100);
+        rotX = rotY = 0;
 
         //Intialize the rotation variables
         rotX = rotY;
 
         //Load the audio file
-        //minim = new Minim(this);
-        //ap = minim.loadFile("data/track.mp3", 1024);
-        //ap.play();
+        minim = new Minim(this);
+        ap = minim.loadFile("Heartbeat.mp3", 1024);
+        ap.play();
 
         //Get the audio buffer
-        //ab = ap.mix;
+        ab = ap.mix;
     }
 
     /*public void keyPressed() 
@@ -80,23 +81,25 @@ public class LarinasVisual extends PApplet{
         rotateX(rotX);
         rotateY(rotY);
 
+        float rotationSpeed = map(getAmplitude(), 0, 1, 0.02f, 0.1f);
+        rotX += rotationSpeed;
+        rotY += rotationSpeed * 0.5f; 
+
         //Map the frame count to create the different colours
-        float hue = map(frameCount, 0, 360, 0, 360);
+        float hue = map(getAmplitude(), 0, 1, 0, 360);
 
         //Set the fill color
-        fill(hue, 100, 100);
-
-        float radius = this.radius + sin(frameCount * 0.05f) * 100;
+        fill(hue, 100, 360);
 
         //Gets the amplitude of the audio and maps it to the star
-        //float amplitude = getAmplitude();
+        float amplitude = getAmplitude();
+        //float radius = this.radius + (amplitude * 200);
+
+        float starSize = radius + sin(frameCount * 0.1f) * 500 * getAmplitude();
 
         //Draw the star
-        drawStar(radius, points);
+        drawStar(starSize, points);
 
-        //Increments the rotation variables
-        rotX += 0.05;
-        rotY += 0.01;
     }
 
     //Draws the star shape
@@ -124,7 +127,7 @@ public class LarinasVisual extends PApplet{
     }
 
     //Gets the amplitude of the audio
-    /*public float getAmplitude()
+    public float getAmplitude()
     {
         float total = 0;
         for(int i = 0; i < ab.size(); i++){
@@ -133,7 +136,6 @@ public class LarinasVisual extends PApplet{
 
         return total / ab.size();
     }
-    */
 
     //Main function that runs the program
     public static void main(String[] args)
