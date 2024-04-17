@@ -18,7 +18,13 @@ public class C22328351 extends PApplet{
 
     public void setup()
     {
-        background(0);
+        colorMode(HSB, 360, 100, 100);
+        rotX = rotY;
+    }
+
+    public void draw()
+    {
+        background (0);
         lights();
 
         translate(width/2, height/2);
@@ -26,16 +32,20 @@ public class C22328351 extends PApplet{
         rotateX(rotX);
         rotateY(rotY);
 
+        float hue = map(frameCount, 0, 360, 0, 360);
+        
+        fill(hue, 255, 255);
+
         drawStar(radius, points);
 
-        rotX += 0.01;
-        rotY += 0.02;
+        rotX += 0.05;
+        rotY += 0.01;
     }
 
-    public void drawStar(float radius, int points)
-    {
+    public void drawStar(float radius, int points){
+
         float angle = TWO_PI / points;
-        float starAngle = angle / 2.0f;
+        float starAngle = angle / 2;
 
         beginShape();
         for(float a = 0; a < TWO_PI; a += angle)
@@ -46,9 +56,9 @@ public class C22328351 extends PApplet{
             float z2 = -radius/2;
             vertex(x, y, z1);
             vertex(0, 0, z2);
-            x = cos(a + starAngle) * radius / 2;
-            y = sin(a + starAngle) * radius / 2;
-            vertex(x, y, z1);
+            float sx = cos(a + starAngle) * radius / 2;
+            float sy = sin(a + starAngle) * radius / 2;
+            vertex(sx, sy, z1);
         }
         endShape(CLOSE);
     }
