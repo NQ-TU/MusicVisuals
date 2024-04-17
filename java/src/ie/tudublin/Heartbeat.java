@@ -8,23 +8,25 @@ import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
 import processing.core.PApplet;
+import ddf.minim.analysis.FFT;
 
 public class Heartbeat extends Visual {
 
     int mode = 3;
+    float[] lerpedBuffer;
     NoelsVisual noelsVisual;
-
+    MichaelsVisuals michaelsVisuals;
     PatricksVisuals PatricksVisuals;
     Minim minim;
     AudioPlayer ap;
     AudioInput ai;
     AudioBuffer ab;
-    MichaelsVisuals michaelsVisuals;
 
     public void settings() {
         // size(800, 800, P3D);
         println("CWD: " + System.getProperty("user.dir"));
         fullScreen(P3D, SPAN);
+        size(1024, 800, P3D);
     }
 
     public void keyPressed() {
@@ -50,15 +52,12 @@ public class Heartbeat extends Visual {
         // noCursor();
         setFrameSize(256);
         startMinim();
-        loadAudio("/Users/michaelferents/Desktop/OOPAssignment/MusicVisuals/java/data/Heartbeat.mp3");
-        getAudioPlayer().play();
+        //loadAudio("/Users/michaelferents/Desktop/OOPAssignment/MusicVisuals/java/data/Heartbeat.mp3");
+        //getAudioPlayer().play();
         // startListening();
         noelsVisual = new NoelsVisual();
-
-        PatricksVisuals = new PatricksVisuals();
-
         michaelsVisuals = new MichaelsVisuals(this);
-
+        PatricksVisuals = new PatricksVisuals();
     }
 
     public void draw() {
@@ -67,7 +66,7 @@ public class Heartbeat extends Visual {
                 noelsVisual.render(this);
                 break;
             case 2:
-                PatricksVisuals.draw();
+                //patricksVisuals.draw();
                 break;
             case 3:
                 michaelsVisuals.testRender();
