@@ -4,7 +4,7 @@ import ie.tudublin.Visual;
 import ie.tudublin.VisualException;
 import ie.tudublin.Heartbeat;
 
-public class LarinasVisual {
+public class LarinasVisual{
 
     private static final float TWO_PI = 0;
 
@@ -56,6 +56,12 @@ public class LarinasVisual {
         }
     }
     */
+
+    public LarinasVisual()
+    {
+        //Initializes the visual object
+        this.HB = HB;
+    }
 
     //Draws function that calls every frame
     public void draw()
@@ -117,10 +123,12 @@ public class LarinasVisual {
     }
 
     //Main function that runs the program
-    public static void main(String[] args)
+    /*public static void main(String[] args)
     {
         LarinasVisual lv = new LarinasVisual();
         lv.settings();
         lv.setup();
-    }
+
+
+    }*/
 }
