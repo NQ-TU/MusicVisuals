@@ -8,6 +8,7 @@ import ie.tudublin.Heartbeat;
 // 2. Refactor old reused code to better fit program. -Done.
 // 3. Add comments to explain the code better for github. -Can be worked on.
 // 4. Use song tempo to adjust the speed of the terrain. -Not attempted yet. (can add like a ship with hearts as its exhaust to give the illusion of navigating the 'city')
+// 5. Add default camera angle, possibly change terrrain to follow camera/object. -Work on.
 
 public class terrainNoel {
 
