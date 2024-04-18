@@ -78,5 +78,4 @@ public class Heartbeat extends Visual {
             getAudioPlayer().play();
         }
     }
-
 }
