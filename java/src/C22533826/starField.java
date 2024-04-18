@@ -17,18 +17,21 @@ public class starField {
     int visWidth;
     Heartbeat HB;
 
-    int numPoints = 2000;
+    int numParticles = 3000;
     float noiseScalar = 0.05f; // Adjust the angle step for smoother transition.
 
     // Create an arraylist of particles.
     ArrayList<PVector> particles;
 
     public starField(int height, int width, Heartbeat HB) {
-        this.visHeight = height / 3;
+        this.visHeight = HB.floor(height / 2.7f);
         this.visWidth = width;
         this.HB = HB;
+        particles = new ArrayList<PVector>();
 
-        // init_particles();
+        for (int i = 0; i < numParticles; i++) {
+            particles.add(new PVector(HB.random(width), HB.random(height)));
+        }
     }
 
     // Refactor needed for the following code, took from previous project.
@@ -42,22 +45,12 @@ public class starField {
         HB.calculateFrequencyBands();
         HB.background(0);
 
-        float height = HB.height;
-        float width = HB.width;
-
         float amplitude = HB.getSmoothedAmplitude();
-
-        if (particles == null) {
-            particles = new ArrayList<PVector>();
-            for (int i = 0; i < numPoints; i++) {
-                particles.add(new PVector(HB.random(width), HB.random(height)));
-            }
-        }
 
         HB.stroke(255);
         HB.fill(255, 150);
 
-        for (int i = 0; i < numPoints; i++) {
+        for (int i = 0; i < numParticles; i++) {
             PVector p = particles.get(i);
             HB.point(p.x, p.y);
 
@@ -72,13 +65,13 @@ public class starField {
 
             // Wrap particle around the screen if it goes out of bounds
             if (p.x < 0) {
-                p.x = width;
-            } else if (p.x > width) {
+                p.x = visWidth;
+            } else if (p.x > visWidth) {
                 p.x = 0;
             }
             if (p.y < 0) {
-                p.y = height;
-            } else if (p.y > height) {
+                p.y = visHeight;
+            } else if (p.y > visHeight) {
                 p.y = 0;
             }
 
