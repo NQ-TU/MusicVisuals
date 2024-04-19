@@ -7,11 +7,52 @@ import c22371846.PatricksVisuals;
 
 public class Heartbeat extends Visual {
 
+    int mode = 4;
+    float[] lerpedBuffer;
+    NoelsVisual noelsVisual;
+    MichaelsVisuals michaelsVisuals;
+    PatricksVisuals PatricksVisuals;
+    LarinasVisual larinasVisual;
+    Minim minim;
+    AudioPlayer ap;
+    AudioInput ai;
+    AudioBuffer ab;
+    
+    public Heartbeat(){
+        this.ab = getAudioBuffer();
+    }
+
+    public void settings() {
+        // size(800, 800, P3D);
+        println("CWD: " + System.getProperty("user.dir"));
+        fullScreen(P3D, SPAN);
+        size(1024, 800, P3D);
+    }
+
+    public void keyPressed() {
+		if (key >= '0' && key <= '9') 
+        {
+			mode = key - '0';
+		}
+		if (keyCode == ' ') {
+            if (ap.isPlaying()) 
+            {
+                ap.pause();
+            } 
+            else 
+            {
+                ap.rewind();
+                ap.play();
+            }
+        }
+	}
+
     int mode = 0;
     NoelsVisual noelsVisual;
     MichaelsVisuals michaelsVisuals;
     PatricksVisuals PatricksVisuals;
-    // LarinasVisual LarinasVisual;
+    LarinasVisual LarinasVisual;
+
 
     public void setup() {
         colorMode(HSB);
@@ -25,6 +66,8 @@ public class Heartbeat extends Visual {
         noelsVisual = new NoelsVisual(this);
         michaelsVisuals = new MichaelsVisuals(this);
         PatricksVisuals = new PatricksVisuals();
+        larinasVisual = new LarinasVisual();
+
         // LarinasVisual = new LarinasVisual();
     }
 
@@ -48,14 +91,18 @@ public class Heartbeat extends Visual {
             case 2:
                 michaelsVisuals.render();
             case 3:
-                // Larina .render();
+                michaelsVisuals.testRender();
+                break;
             case 4:
-                // LarinasVisual.draw();
+                larinasVisual.draw();
+                // Larina .render();
+     
                 break;
             default:
                 break;
         }
     }
+
 
     public void keyPressed() {
         // Pauses playback of the song
@@ -78,4 +125,5 @@ public class Heartbeat extends Visual {
             getAudioPlayer().play();
         }
     }
+
 }

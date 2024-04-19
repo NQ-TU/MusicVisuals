@@ -1,11 +1,15 @@
 package C22328351;
 
-import ddf.minim.AudioBuffer;
-import ddf.minim.AudioPlayer;
-import ddf.minim.Minim;
-import processing.core.PApplet;
+import ie.tudublin.Visual;
+import ie.tudublin.VisualException;
+import ie.tudublin.Heartbeat;
 
-public class LarinasVisual extends PApplet{
+public class LarinasVisual{
+
+    private static final float TWO_PI = 0;
+
+    //Declaring variable
+    private Heartbeat HB;
 
     //Rotating star variable
     float rotX, rotY;
@@ -14,36 +18,22 @@ public class LarinasVisual extends PApplet{
     float radius = 200;
     int points = 5;
 
-    //Audio library objects
-    Minim minim;
-    AudioPlayer ap;
-    AudioBuffer ab;
-
     //int mode = 0;
 
     //Processing setup
     public void settings()
     {
-        size(800, 800, P3D);
+        HB = new Heartbeat();
+        HB.settings();
     }
 
     //Setup function that intializes the color mode and loads the audio file
     public void setup()
     {
         //Color mode and rotation variables
-        colorMode(HSB, 360, 100, 100);
+        HB.setup();
         rotX = rotY = 0;
 
-        //Intialize the rotation variables
-        rotX = rotY;
-
-        //Load the audio file
-        minim = new Minim(this);
-        ap = minim.loadFile("Heartbeat.mp3", 1024);
-        ap.play();
-
-        //Get the audio buffer
-        ab = ap.mix;
     }
 
     /*public void keyPressed() 
@@ -67,41 +57,45 @@ public class LarinasVisual extends PApplet{
     }
     */
 
+    public LarinasVisual()
+    {
+        //Initializes the visual object
+        this.HB = HB;
+    }
+
     //Draws function that calls every frame
     public void draw()
     {
-        //Clear the background and set the lights
-        background (0);
-        lights();
+        HB.draw();
 
-        //Translate the origin to the center of the screen
-        translate(width/2, height/2);
+        //Clear the background and set the lights
+        HB.background (0);
+        HB.lights();
 
         //Rotates the star on the x and y axis
-        rotateX(rotX);
-        rotateY(rotY);
+        HB.rotateX(rotX);
+        HB.rotateY(rotY);
 
-        float rotationSpeedX = map(getAmplitude(), 0, 1, 0.02f, 0.1f);
-        float rotationSpeedY = map(getAmplitude(), 0, 1, 0.02f, 0.05f);
+        float rotationSpeedX = HB.map(HB.getAmplitude(), 0, 1, 0.02f, 0.1f);
+        float rotationSpeedY = HB.map(HB.getAmplitude(), 0, 1, 0.02f, 0.05f);
 
         rotX += rotationSpeedX;
         rotY += rotationSpeedY;
 
         //Map the frame count to create the different colours
-        float hue = map(getAmplitude(), 0, 1, 0, 360);
+        float hue = HB.map(HB.getAmplitude(), 0, 1, 0, 360);
 
         //Set the fill color
-        fill(hue, 100, 360);
+        HB.fill(hue, 100, 360);
 
         //Gets the amplitude of the audio and maps it to the star
-        float amplitude = getAmplitude();
+        float amplitude = HB.getAmplitude();
         //float radius = this.radius + (amplitude * 200);
 
-        float starSize = radius + sin(frameCount * 0.1f) * 500 * getAmplitude();
+        float starSize = radius + HB.sin(HB.frameCount * 0.1f) * 500 * HB.getAmplitude();
 
         //Draw the star
         drawStar(starSize, points);
-
     }
 
     //Draws the star shape
@@ -112,38 +106,29 @@ public class LarinasVisual extends PApplet{
         float starAngle = angle / 2;
 
         //Draws the star shape
-        beginShape();
+        HB.beginShape();
         for(float a = 0; a < TWO_PI; a += angle)
         {
-            float x = cos(a) * radius;
-            float y = sin(a) * radius;
+            float x = HB. cos(a) * radius;
+            float y = HB.sin(a) * radius;
             float z1 = radius/2;
             float z2 = -radius/2;
-            vertex(x, y, z1);
-            vertex(0, 0, z2);
-            float sx = cos(a + starAngle) * radius / 2;
-            float sy = sin(a + starAngle) * radius / 2;
-            vertex(sx, sy, z1);
+            HB.vertex(x, y, z1);
+            HB.vertex(0, 0, z2);
+            float sx = HB.cos(a + starAngle) * radius / 2;
+            float sy = HB.sin(a + starAngle) * radius / 2;
+            HB.vertex(sx, sy, z1);
         }
-        endShape(CLOSE);
-    }
-
-    //Gets the amplitude of the audio
-    public float getAmplitude()
-    {
-        float total = 0;
-        for(int i = 0; i < ab.size(); i++){
-            total += abs(ab.get(i));
-        }
-
-        return total / ab.size();
+        HB.endShape(HB.CLOSE);
     }
 
     //Main function that runs the program
-    public static void main(String[] args)
+    /*public static void main(String[] args)
     {
-        PApplet.main("C22328351.LarinasVisual");
-    }
+        LarinasVisual lv = new LarinasVisual();
+        lv.settings();
+        lv.setup();
 
-    
+
+    }*/
 }
