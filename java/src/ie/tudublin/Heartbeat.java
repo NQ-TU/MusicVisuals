@@ -8,17 +8,14 @@ import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
-import processing.core.PApplet;
 import ddf.minim.analysis.FFT;
-
 
 public class Heartbeat extends Visual {
 
     int mode = 0;
     NoelsVisual noelsVisual;
     MichaelsVisuals michaelsVisuals;
-    PatricksVisuals patricksVisuals;
-    LarinasVisual LarinasVisual;
+z    LarinasVisual LarinasVisual;
     Minim minim;
     AudioPlayer ap;
     AudioInput ai;
@@ -44,7 +41,7 @@ public class Heartbeat extends Visual {
 
         noelsVisual = new NoelsVisual(this);
         michaelsVisuals = new MichaelsVisuals(this);
-        //patricksVisuals = new PatricksVisuals();
+        //patricksVisuals = new patricksVisuals(this);
         LarinasVisual = new LarinasVisual();
     }
 
@@ -88,5 +85,4 @@ public class Heartbeat extends Visual {
             getAudioPlayer().play();
         }
     }
-
 }
