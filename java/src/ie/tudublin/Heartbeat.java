@@ -15,7 +15,7 @@ public class Heartbeat extends Visual {
     int mode = 0;
     NoelsVisual noelsVisual;
     MichaelsVisuals michaelsVisuals;
-z    LarinasVisual LarinasVisual;
+    LarinasVisual LarinasVisual;
     Minim minim;
     AudioPlayer ap;
     AudioInput ai;
