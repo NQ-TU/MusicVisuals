@@ -13,6 +13,7 @@ import ddf.minim.analysis.FFT;
 
 public class Heartbeat extends Visual {
 
+    private static final Heartbeat HB = null;
     int mode = 4;
     float[] lerpedBuffer;
     NoelsVisual noelsVisual;
@@ -23,6 +24,8 @@ public class Heartbeat extends Visual {
     AudioPlayer ap;
     AudioInput ai;
     AudioBuffer ab;
+    public int innerHue;
+    public int outerHue;
     
     public Heartbeat(){
         this.ab = getAudioBuffer();
@@ -64,7 +67,8 @@ public class Heartbeat extends Visual {
         noelsVisual = new NoelsVisual();
         michaelsVisuals = new MichaelsVisuals(this);
         PatricksVisuals = new PatricksVisuals();
-        larinasVisual = new LarinasVisual();
+        larinasVisual = new LarinasVisual(HB);
+        larinasVisual.setup();
     }
 
     public void draw() {
