@@ -34,7 +34,7 @@ public class NoelsVisual {
 
     // Render starField and terrainNoel. Reset camera to ensure that visuals are
     // consistent.
-    public void render() {
+    public void renderScene() {
         HB.background(0);
         resetCamera();
         sf.render();
