@@ -12,6 +12,49 @@ import ddf.minim.analysis.FFT;
 
 public class Heartbeat extends Visual {
 
+    private static final Heartbeat HB = null;
+    int mode = 4;
+    float[] lerpedBuffer;
+    NoelsVisual noelsVisual;
+    MichaelsVisuals michaelsVisuals;
+    PatricksVisuals PatricksVisuals;
+    LarinasVisual larinasVisual;
+    Minim minim;
+    AudioPlayer ap;
+    AudioInput ai;
+    AudioBuffer ab;
+    public int innerHue;
+    public int outerHue;
+    
+    public Heartbeat(){
+        this.ab = getAudioBuffer();
+    }
+
+    public void settings() {
+        // size(800, 800, P3D);
+        println("CWD: " + System.getProperty("user.dir"));
+        fullScreen(P3D, SPAN);
+        size(1024, 800, P3D);
+    }
+
+    public void keyPressed() {
+		if (key >= '0' && key <= '9') 
+        {
+			mode = key - '0';
+		}
+		if (keyCode == ' ') {
+            if (ap.isPlaying()) 
+            {
+                ap.pause();
+            } 
+            else 
+            {
+                ap.rewind();
+                ap.play();
+            }
+        }
+	}
+
     int mode = 0;
     NoelsVisual noelsVisual;
     MichaelsVisuals michaelsVisuals;
@@ -57,12 +100,17 @@ public class Heartbeat extends Visual {
             case 2:
                 michaelsVisuals.render();
             case 3:
+                michaelsVisuals.testRender();
+                break;
+            case 4:
+                larinasVisual.draw();
                 // Larina .render();
                 break;
             default:
                 break;
         }
     }
+
 
     public void keyPressed() {
         // Pauses playback of the song

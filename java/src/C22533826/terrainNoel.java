@@ -8,6 +8,7 @@ import ie.tudublin.Heartbeat;
 // 2. Refactor old reused code to better fit program. -Done.
 // 3. Add comments to explain the code better for github. -Can be worked on.
 // 4. Use song tempo to adjust the speed of the terrain. -Not attempted yet. (can add like a ship with hearts as its exhaust to give the illusion of navigating the 'city')
+// 5. Add default camera angle, possibly change terrrain to follow camera/object. -Work on.
 
 public class terrainNoel {
 
@@ -48,6 +49,10 @@ public class terrainNoel {
         HB.translate(-HB.width / 2.5f, (-HB.height / 1.5f));
 
         // Render the terrain, cube by cube.
+        render_Terrain();
+    }
+
+    public void render_Terrain() {
         for (int x = 0; x < cols; x++) {
             for (int y = 0; y < rows; y++) {
                 color_Terrain(x, y);
@@ -65,6 +70,9 @@ public class terrainNoel {
         flying -= 0.025f;
         yOffset = flying;
 
+        // Set the middle and outer bounds for the terrain.
+        // To-do: Change these values to potentially be smaller the wider out, to give
+        // the illusion of a planet.
         float middleMax = cols / 3.3f * 2;
         int outerStart = (int) (cols * 0.1);
         int outerEnd = (int) (cols * 0.9);
