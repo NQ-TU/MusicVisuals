@@ -7,60 +7,19 @@ import C22328351.LarinasVisual;
 
 public class Heartbeat extends Visual {
 
-    private static final Heartbeat HB = null;
-    int mode = 4;
-    float[] lerpedBuffer;
-    NoelsVisual noelsVisual;
-    MichaelsVisuals michaelsVisuals;
-    PatricksVisuals PatricksVisuals;
-    LarinasVisual larinasVisual;
-    Minim minim;
-    AudioPlayer ap;
-    AudioInput ai;
-    AudioBuffer ab;
-    public int innerHue;
-    public int outerHue;
-    
-    public Heartbeat(){
-        this.ab = getAudioBuffer();
-    }
-
-    public void settings() {
-        // size(800, 800, P3D);
-        println("CWD: " + System.getProperty("user.dir"));
-        fullScreen(P3D, SPAN);
-        size(1024, 800, P3D);
-    }
-
-    public void keyPressed() {
-		if (key >= '0' && key <= '9') 
-        {
-			mode = key - '0';
-		}
-		if (keyCode == ' ') {
-            if (ap.isPlaying()) 
-            {
-                ap.pause();
-            } 
-            else 
-            {
-                ap.rewind();
-                ap.play();
-            }
-        }
-	}
-
-    int mode = 0;
+    int mode = 1;
     NoelsVisual noelsVisual;
     MichaelsVisuals michaelsVisuals;
     LarinasVisual LarinasVisual;
     PatricksVisual patricksVisuals;
 
+    // Larinas ?
+    public int innerHue;
+    public int outerHue;
+
     public void settings() {
-        // size(800, 800, P3D);
         println("CWD: " + System.getProperty("user.dir"));
         fullScreen(P3D, SPAN);
-        // size(1024, 800, P3D);
     }
 
     public void setup() {
@@ -70,37 +29,35 @@ public class Heartbeat extends Visual {
         loadAudio("Heartbeat.mp3");
         getAudioPlayer().play();
         // startListening();
+        // noCursor();
 
         noelsVisual = new NoelsVisual(this);
         michaelsVisuals = new MichaelsVisuals(this);
         patricksVisuals = new PatricksVisual(this);
-        LarinasVisual = new LarinasVisual();
-        // noCursor();
+        // LarinasVisual = new LarinasVisual();
     }
 
     public void draw() {
-
         switch (mode) {
-            case 0:
-                noelsVisual.render();
-                break;
             case 1:
-                patricksVisuals.renderAnimation();
+                noelsVisual.renderScene();
                 break;
             case 2:
-                michaelsVisuals.render();
+                patricksVisuals.renderAnimation();
+                break;
             case 3:
-                michaelsVisuals.testRender();
+                michaelsVisuals.render();
                 break;
             case 4:
-                larinasVisual.draw();
-                // Larina .render();
+                // LarinasVisual.render();
+                break;
+            case 5:
+                // Addtional renderings...
                 break;
             default:
                 break;
         }
     }
-
 
     public void keyPressed() {
         // Pauses playback of the song
@@ -113,7 +70,7 @@ public class Heartbeat extends Visual {
         }
 
         // Uses mode variable to switch between visuals
-        if (keyCode >= '0' && keyCode <= '3') {
+        if (keyCode >= '0' && keyCode <= '9') {
             mode = keyCode - '0';
         }
 
