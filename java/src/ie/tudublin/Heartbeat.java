@@ -2,13 +2,8 @@ package ie.tudublin;
 
 import C21325616.MichaelsVisuals;
 import C22533826.NoelsVisual;
-import c22371846.PatricksVisuals;
+import c22371846.PatricksVisual;
 import C22328351.LarinasVisual;
-import ddf.minim.AudioBuffer;
-import ddf.minim.AudioInput;
-import ddf.minim.AudioPlayer;
-import ddf.minim.Minim;
-import ddf.minim.analysis.FFT;
 
 public class Heartbeat extends Visual {
 
@@ -16,33 +11,28 @@ public class Heartbeat extends Visual {
     NoelsVisual noelsVisual;
     MichaelsVisuals michaelsVisuals;
     LarinasVisual LarinasVisual;
-    Minim minim;
-    AudioPlayer ap;
-    AudioInput ai;
-    AudioBuffer ab;
+    PatricksVisual patricksVisuals;
 
     public void settings() {
-        //size(800, 800, P3D);
+        // size(800, 800, P3D);
         println("CWD: " + System.getProperty("user.dir"));
         fullScreen(P3D, SPAN);
-        size(1024, 800, P3D);
+        // size(1024, 800, P3D);
     }
 
     public void setup() {
         colorMode(HSB);
-        // noCursor();
-        setFrameSize(512);
-        startMinim();
-        getAudioPlayer().play();
-        startListening();
         setFrameSize(512);
         startMinim();
         loadAudio("Heartbeat.mp3");
+        getAudioPlayer().play();
+        // startListening();
 
         noelsVisual = new NoelsVisual(this);
         michaelsVisuals = new MichaelsVisuals(this);
-        //patricksVisuals = new patricksVisuals(this);
+        patricksVisuals = new PatricksVisual(this);
         LarinasVisual = new LarinasVisual();
+        // noCursor();
     }
 
     public void draw() {
@@ -52,7 +42,7 @@ public class Heartbeat extends Visual {
                 noelsVisual.render();
                 break;
             case 1:
-                patricksVisuals.render();
+                patricksVisuals.renderAnimation();
                 break;
             case 2:
                 michaelsVisuals.render();

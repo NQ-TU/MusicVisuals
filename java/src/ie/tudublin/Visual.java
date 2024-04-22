@@ -48,12 +48,11 @@ public abstract class Visual extends PApplet {
 		for (int i = 0; i < ab.size(); i++) {
 			total += abs(ab.get(i));
 		}
-		amplitude = total / ab.size(); 
+		amplitude = total / ab.size();
 		smothedAmplitude = PApplet.lerp(smothedAmplitude, amplitude, 0.1f);
 	}
 
-	public void calculateFrequencyBands() 
-	{
+	public void calculateFrequencyBands() {
 		for (int i = 0; i < bands.length; i++) {
 			int start = (int) pow(2, i) - 1;
 			int w = (int) pow(2, i);
