@@ -7,6 +7,7 @@ import c22371846.PatricksVisuals;
 
 public class Heartbeat extends Visual {
 
+    private static final Heartbeat HB = null;
     int mode = 4;
     float[] lerpedBuffer;
     NoelsVisual noelsVisual;
@@ -17,6 +18,8 @@ public class Heartbeat extends Visual {
     AudioPlayer ap;
     AudioInput ai;
     AudioBuffer ab;
+    public int innerHue;
+    public int outerHue;
     
     public Heartbeat(){
         this.ab = getAudioBuffer();
@@ -67,14 +70,6 @@ public class Heartbeat extends Visual {
         michaelsVisuals = new MichaelsVisuals(this);
         PatricksVisuals = new PatricksVisuals();
         larinasVisual = new LarinasVisual();
-
-        // LarinasVisual = new LarinasVisual();
-    }
-
-    public void settings() {
-        fullScreen(P3D, SPAN);
-        // size(1024, 768, P3D);
-        println("CWD: " + System.getProperty("user.dir"));
     }
 
     public void draw() {
