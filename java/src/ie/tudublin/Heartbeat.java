@@ -3,13 +3,7 @@ package ie.tudublin;
 import C21325616.MichaelsVisuals;
 import C22533826.NoelsVisual;
 import c22371846.PatricksVisuals;
-import C22328351.LarinasVisual;
-import ddf.minim.AudioBuffer;
-import ddf.minim.AudioInput;
-import ddf.minim.AudioPlayer;
-import ddf.minim.Minim;
-import processing.core.PApplet;
-import ddf.minim.analysis.FFT;
+// import C22328351.LarinasVisual;
 
 public class Heartbeat extends Visual {
 
@@ -56,37 +50,74 @@ public class Heartbeat extends Visual {
         }
 	}
 
+    int mode = 0;
+    NoelsVisual noelsVisual;
+    MichaelsVisuals michaelsVisuals;
+    PatricksVisuals PatricksVisuals;
+    LarinasVisual LarinasVisual;
+
+
     public void setup() {
         colorMode(HSB);
-        // noCursor();
-        setFrameSize(256);
+        setFrameSize(512);
         startMinim();
-        //loadAudio("/Users/michaelferents/Desktop/OOPAssignment/MusicVisuals/java/data/Heartbeat.mp3");
-        //getAudioPlayer().play();
+        loadAudio("Heartbeat.mp3");
+        getAudioPlayer().play();
         // startListening();
-        noelsVisual = new NoelsVisual();
+        // noCursor();
+
+        noelsVisual = new NoelsVisual(this);
         michaelsVisuals = new MichaelsVisuals(this);
         PatricksVisuals = new PatricksVisuals();
-        larinasVisual = new LarinasVisual(HB);
-        larinasVisual.setup();
+        larinasVisual = new LarinasVisual();
     }
 
     public void draw() {
+
         switch (mode) {
             case 0:
-                noelsVisual.render(this);
+                noelsVisual.render();
+                break;
+            case 1:
+                // PatricksVisuals.render();
+                // case 2:
+                // //patricksVisuals.draw();
                 break;
             case 2:
-                //patricksVisuals.draw();
-                break;
+                michaelsVisuals.render();
             case 3:
                 michaelsVisuals.testRender();
                 break;
             case 4:
                 larinasVisual.draw();
+                // Larina .render();
+     
                 break;
             default:
                 break;
+        }
+    }
+
+
+    public void keyPressed() {
+        // Pauses playback of the song
+        if (key == ' ') {
+            if (getAudioPlayer().isPlaying()) {
+                getAudioPlayer().pause();
+            } else {
+                getAudioPlayer().play();
+            }
+        }
+
+        // Uses mode variable to switch between visuals
+        if (keyCode >= '0' && keyCode <= '3') {
+            mode = keyCode - '0';
+        }
+
+        // Restarts the song
+        if (key == 'r') {
+            getAudioPlayer().cue(0);
+            getAudioPlayer().play();
         }
     }
 
