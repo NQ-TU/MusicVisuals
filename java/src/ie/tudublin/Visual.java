@@ -129,4 +129,9 @@ public abstract class Visual extends PApplet {
 	public FFT getFFT() {
 		return fft;
 	}
+
+    public static void render() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'render'");
+    }
 }

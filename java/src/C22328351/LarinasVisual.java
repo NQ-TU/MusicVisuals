@@ -2,24 +2,26 @@ package C22328351;
 
 import ie.tudublin.Visual;
 import ie.tudublin.VisualException;
+import processing.core.PConstants;
 import ie.tudublin.Heartbeat;
 
 public class LarinasVisual{
 
     private static final float TWO_PI = 0;
 
-    private float outerHue;
-    private float innerHue;
+    private static float outerHue;
+    private static float innerHue;
 
     //Declaring variable
     private static Heartbeat HB;
 
     //Rotating star variable
-    float rotX, rotY;
+    static float rotX;
+    static float rotY;
 
     //Star size and points variables
-    float radius = 200;
-    int points = 5;
+    static float radius = 200;
+    static int points = 5;
 
     //int mode = 0;
 
@@ -30,7 +32,7 @@ public class LarinasVisual{
         HB.settings();
     }
 
-    //Setup function that intializes the color mode and loads the audio file
+    //Setup function that initializes the color mode and loads the audio file
     public void setup()
     {
         //Color mode and rotation variables
@@ -60,14 +62,14 @@ public class LarinasVisual{
     }
     */
 
-    public LarinasVisual(Heartbeat HB)
+    public LarinasVisual()
     {
         //Initializes the visual object
-        this.HB = HB;
+        LarinasVisual.HB = HB;
     }
 
     //Draws function that calls every frame
-    public void draw()
+    public static void render()
     {
         HB.draw();
 
@@ -79,20 +81,20 @@ public class LarinasVisual{
         HB.rotateX(rotX);
         HB.rotateY(rotY);
 
-        float rotationSpeedX = HB.map(HB.getAmplitude(), 0, 1, 0.02f, 0.1f);
-        float rotationSpeedY = HB.map(HB.getAmplitude(), 0, 1, 0.02f, 0.05f);
+        float rotationSpeedX = Heartbeat.map(HB.getAmplitude(), 0, 1, 0.02f, 0.1f);
+        float rotationSpeedY = Heartbeat.map(HB.getAmplitude(), 0, 1, 0.02f, 0.05f);
 
         rotX += rotationSpeedX;
         rotY += rotationSpeedY;
 
         //Map the frame count to create the different colours
-            innerHue = HB.map(HB.getAmplitude(), 0, 1, 0, 360);
-            outerHue = HB.map(HB.getAmplitude(), 0, 1, 0, 360);
+            innerHue = Heartbeat.map(HB.getAmplitude(), 0, 1, 0, 360);
+            outerHue = Heartbeat.map(HB.getAmplitude(), 0, 1, 0, 360);
 
             //Set the fill color
             HB.fill(innerHue, 100, 360);
             HB.stroke(innerHue, 90, 90, 150);
-            drawStar(HB, radius,points, points, outerHue, innerHue);
+            drawStar(HB, radius, points, points, outerHue, innerHue);
             HB.strokeWeight(4);
 
             HB.fill(outerHue, 200, 360);
@@ -106,101 +108,55 @@ public class LarinasVisual{
         float amplitude = HB.getAmplitude();
         //float radius = this.radius + (amplitude * 200);
 
-        float starSize = radius + HB.sin(HB.frameCount * 0.1f) * 500 * HB.getAmplitude();
+        float starSize = radius + Heartbeat.sin(HB.frameCount * 0.1f) * 500 * HB.getAmplitude();
        
         //Draw the star outer
-        void drawStar(Heartbeat HB, float radius, float starSize, int points, float outerHue, float innerHue){
+        static void drawStar(Heartbeat HB, float radius, float starSize, int points, float outerHue, float innerHue){
             //Calculates the angle and star angle
-            float angle = HB.TWO_PI / points;
+            float angle = PConstants.TWO_PI / points;
             float starAngle = angle / 2;
 
             //Draws the star shape
             HB.beginShape();
-            for (float a = 0; a < HB.TWO_PI; a += angle) {
-                float x = HB.cos(a) * starSize;
-                float y = HB.sin(a) * starSize;
+            for (float a = 0; a < PConstants.TWO_PI; a += angle) {
+                float x = Heartbeat.cos(a) * starSize;
+                float y = Heartbeat.sin(a) * starSize;
                 float z1 = starSize / 2;
                 float z2 = -starSize / 2;
                 HB.stroke(HB.outerHue, 100, 360); // Use vibrant color with maximum saturation and brightness
                 HB.vertex(x, y, z1);
                 HB.vertex(0, 0, z2);
-                float sx = HB.cos(a + starAngle) * starSize / 2;
-                float sy = HB.sin(a + starAngle) * starSize / 2;
+                float sx = Heartbeat.cos(a + starAngle) * starSize / 2;
+                float sy = Heartbeat.sin(a + starAngle) * starSize / 2;
                 HB.vertex(sx, sy, z1);
             }
-            HB.endShape(HB.CLOSE);
+            HB.endShape(PConstants.CLOSE);
 
             float innerRadius = starSize * 0.06f;
             HB.beginShape();
-            for(float a = 0; a < HB.TWO_PI; a += angle)
+            for(float a = 0; a < PConstants.TWO_PI; a += angle)
             {
-                float x = HB.cos(a) * innerRadius;
-                float y = HB.sin(a) * innerRadius;
+                float x = Heartbeat.cos(a) * innerRadius;
+                float y = Heartbeat.sin(a) * innerRadius;
                 float z1 = starSize / 2;
                 float z2 = -starSize / 2;
                 HB.stroke(HB.innerHue, 100, 100);
                 HB.vertex(x, y, z1);
                 HB.vertex(0, 0, z2);
-                float sx = HB.cos(a + starAngle) * innerRadius / 2;
-                float sy = HB.sin(a + starAngle) * innerRadius / 2;
+                float sx = Heartbeat.cos(a + starAngle) * innerRadius / 2;
+                float sy = Heartbeat.sin(a + starAngle) * innerRadius / 2;
             }
-            HB.endShape(HB.CLOSE);
+            HB.endShape(PConstants.CLOSE);
         }
     
-        //Draw the star inner
-        //HB.drawStar(starSize * 0.5f, points, outerHue, innerHue);
-
-
-    //Draws the star shape
-    /*public void drawStar(Heartbeat HB, float radius, int points, float innerHue, float outerHue){
-
-        //Calculates the angle and star angle
-        float angle = TWO_PI / points;
-        float starAngle = angle / 2;
-
-        //Draws the star shape
-        HB.beginShape();
-        for (float a = 0; a < TWO_PI; a += angle) {
-            float x = HB.cos(a) * radius;
-            float y = HB.sin(a) * radius;
-            float z1 = radius / 2;
-            float z2 = -radius / 2;
-            HB.stroke(HB.outerHue, 100, 360); // Use vibrant color with maximum saturation and brightness
-            HB.vertex(x, y, z1);
-            HB.vertex(0, 0, z2);
-            float sx = HB.cos(a + starAngle) * radius / 2;
-            float sy = HB.sin(a + starAngle) * radius / 2;
-            HB.vertex(sx, sy, z1);
-        }
-        HB.endShape(HB.CLOSE);
-
-        float innerRadius = radius * 0.06f;
-        HB.beginShape();
-        for(float a = 0; a < TWO_PI; a += angle)
-        {
-            float x = HB.cos(a) * innerRadius;
-            float y = HB.sin(a) * innerRadius;
-            float z1 = radius / 2;
-            float z2 = -radius / 2;
-            HB.stroke(HB.innerHue, 100, 100);
-            HB.vertex(x, y, z1);
-            HB.vertex(0, 0, z2);
-            float sx = HB.cos(a + starAngle) * innerRadius / 2;
-            float sy = HB.sin(a + starAngle) * innerRadius / 2;
-        }
-        HB.endShape(HB.CLOSE);
-
-    }*/
+        
+        
 
     //Main function that runs the program
-    public static void main(String[] args)
-    {
-        LarinasVisual lv = new LarinasVisual(HB);
-        lv.settings();
-        lv.setup();
-
-
+    public static void renderVisual(){
+        Visual.render();
     }
+
 }
 
 

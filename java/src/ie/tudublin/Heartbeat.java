@@ -3,7 +3,12 @@ package ie.tudublin;
 import C21325616.MichaelsVisuals;
 import C22533826.NoelsVisual;
 import c22371846.PatricksVisuals;
-// import C22328351.LarinasVisual;
+import ddf.minim.AudioBuffer;
+import ddf.minim.AudioInput;
+import ddf.minim.AudioPlayer;
+import ddf.minim.Minim;
+import C22328351.LarinasVisual;
+
 
 public class Heartbeat extends Visual {
 
@@ -32,7 +37,7 @@ public class Heartbeat extends Visual {
         size(1024, 800, P3D);
     }
 
-    public void keyPressed() {
+    /*public void keyPressed() {
 		if (key >= '0' && key <= '9') 
         {
 			mode = key - '0';
@@ -48,14 +53,7 @@ public class Heartbeat extends Visual {
                 ap.play();
             }
         }
-	}
-
-    int mode = 0;
-    NoelsVisual noelsVisual;
-    MichaelsVisuals michaelsVisuals;
-    PatricksVisuals PatricksVisuals;
-    LarinasVisual LarinasVisual;
-
+	}*/
 
     public void setup() {
         colorMode(HSB);
@@ -70,6 +68,7 @@ public class Heartbeat extends Visual {
         michaelsVisuals = new MichaelsVisuals(this);
         PatricksVisuals = new PatricksVisuals();
         larinasVisual = new LarinasVisual();
+        larinasVisual.setup();
     }
 
     public void draw() {
@@ -86,11 +85,10 @@ public class Heartbeat extends Visual {
             case 2:
                 michaelsVisuals.render();
             case 3:
-                michaelsVisuals.testRender();
+                //michaelsVisuals.testRender();
                 break;
             case 4:
-                larinasVisual.draw();
-                // Larina .render();
+                larinasVisual.render();
      
                 break;
             default:
@@ -110,7 +108,7 @@ public class Heartbeat extends Visual {
         }
 
         // Uses mode variable to switch between visuals
-        if (keyCode >= '0' && keyCode <= '3') {
+        if (keyCode >= '0' && keyCode <= '4') {
             mode = keyCode - '0';
         }
 
