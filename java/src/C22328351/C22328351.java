@@ -34,7 +34,7 @@ public class C22328351 extends PApplet{
     }
 
 
-    //Setup function that intializes the color mode and loads the audio file
+    //Setup function that initializes the color mode and loads the audio file
     public void setup()
     {
         //Color mode and rotation variables
@@ -42,7 +42,7 @@ public class C22328351 extends PApplet{
         rotX = rotY = 0;
 
 
-        //Intialize the rotation variables
+        //Initialize the rotation variables
         //rotX = rotY;
 
 
