@@ -2,17 +2,12 @@ package ie.tudublin;
 
 import C21325616.MichaelsVisuals;
 import C22533826.NoelsVisual;
-import c22371846.PatricksVisuals;
-import ddf.minim.AudioBuffer;
-import ddf.minim.AudioInput;
-import ddf.minim.AudioPlayer;
-import ddf.minim.Minim;
+import c22371846.PatricksVisual;
 import C22328351.LarinasVisual;
-
 
 public class Heartbeat extends Visual {
 
-    int mode = 1;
+    int mode = 4;
     NoelsVisual noelsVisual;
     MichaelsVisuals michaelsVisuals;
     LarinasVisual LarinasVisual;
@@ -27,27 +22,6 @@ public class Heartbeat extends Visual {
         fullScreen(P3D, SPAN);
     }
 
-
-    /*public void keyPressed() {
-		if (key >= '0' && key <= '9') 
-        {
-			mode = key - '0';
-		}
-		if (keyCode == ' ') {
-            if (ap.isPlaying()) 
-            {
-                ap.pause();
-            } 
-            else 
-            {
-                ap.rewind();
-                ap.play();
-            }
-        }
-	}*/
-
-
-
     public void setup() {
         colorMode(HSB);
         setFrameSize(512);
@@ -59,14 +33,8 @@ public class Heartbeat extends Visual {
 
         noelsVisual = new NoelsVisual(this);
         michaelsVisuals = new MichaelsVisuals(this);
-
-        PatricksVisuals = new PatricksVisuals();
-        larinasVisual = new LarinasVisual();
-        larinasVisual.setup();
-
         patricksVisuals = new PatricksVisual(this);
-        
-
+        LarinasVisual = new LarinasVisual(this);
     }
 
     public void draw() {
@@ -78,20 +46,15 @@ public class Heartbeat extends Visual {
                 patricksVisuals.renderAnimation();
                 break;
             case 3:
-                //michaelsVisuals.testRender();
-                break;
-            case 4:
-                larinasVisual.render();
-     
-
                 michaelsVisuals.render();
                 break;
             case 4:
-                // LarinasVisual.render();
+                noelsVisual.resetCamera();
+                noelsVisual.setDefaultCamera();
+                LarinasVisual.render();
                 break;
             case 5:
                 // Addtional renderings...
-
                 break;
             default:
                 break;
@@ -109,11 +72,7 @@ public class Heartbeat extends Visual {
         }
 
         // Uses mode variable to switch between visuals
-
-        if (keyCode >= '0' && keyCode <= '4') {
-
         if (keyCode >= '0' && keyCode <= '9') {
-
             mode = keyCode - '0';
         }
 

@@ -37,12 +37,13 @@ public class NoelsVisual {
     public void renderScene() {
         HB.background(0);
         resetCamera();
+        HB.noLights();
         sf.render();
         tn.render();
     }
 
     // Reset camera to default values.
-    private void resetCamera() {
+    public void resetCamera() {
         HB.camera(eyeX, eyeY, eyeZ,
                 centerX, centerY, centerZ,
                 upX, upY, upZ);
@@ -50,7 +51,7 @@ public class NoelsVisual {
 
     // Set default camera values, ensures consistency when rendering with other
     // visuals.
-    private void setDefaultCamera() {
+    public void setDefaultCamera() {
         eyeX = HB.width / 2.0f;
         eyeY = HB.height / 2.0f;
         eyeZ = (HB.height / 2.0f) / HB.tan(HB.PI / 6.0f); // FOV is 60 degrees by default.
