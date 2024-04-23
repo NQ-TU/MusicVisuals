@@ -13,6 +13,7 @@ public class Heartbeat extends Visual {
     LarinasVisual LarinasVisual;
     PatricksVisual patricksVisuals;
 
+
     public void settings() {
         println("CWD: " + System.getProperty("user.dir"));
         fullScreen(P3D, SPAN);
@@ -80,4 +81,5 @@ public class Heartbeat extends Visual {
             getAudioPlayer().play();
         }
     }
+
 }
