@@ -18,6 +18,7 @@ public class LarinasVisual {
     static int numSparkles = 100;
     static float sparkleSize = 5;
 
+
     public LarinasVisual(Heartbeat HB) {
         this.HB = HB;
         HB.colorMode(HB.HSB, 360, 100, 100);
@@ -68,6 +69,7 @@ public class LarinasVisual {
         HB.noLights();
     }
 
+
     public void drawSparkles(){
         HB.noStroke();
         HB.fill(255);
@@ -84,6 +86,7 @@ public class LarinasVisual {
         
         }
     }
+
 
     public void drawStar(float radius, int points, float innerHue, float outerHue) {
         float angle = HB.TWO_PI / points;
