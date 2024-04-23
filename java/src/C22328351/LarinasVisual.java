@@ -1,8 +1,8 @@
 package C22328351;
 
 import ie.tudublin.VisualException;
-import processing.core.PVector;
 import ie.tudublin.Heartbeat;
+import java.util.Random;
 
 public class LarinasVisual {
 
@@ -12,7 +12,11 @@ public class LarinasVisual {
     float radius = 200;
     int points = 5;
 
+    static float outerHue;
+    static float innerHue;
     
+    static int numSparkles = 100;
+    static float sparkleSize = 5;
 
     public LarinasVisual(Heartbeat HB) {
         this.HB = HB;
@@ -38,8 +42,8 @@ public class LarinasVisual {
 
         HB.calculateAverageAmplitude();
 
-        float innerHue = HB.map(HB.getAmplitude(), 0, 1, 0, 360);
-        float outerHue = HB.map(HB.getAmplitude(), 0, 1, 0, 360);
+        innerHue = HB.map(HB.getAmplitude(), 0, 1, 0, 360);
+        outerHue = HB.map(HB.getAmplitude(), 0, 1, 0, 360);
 
         HB.fill(innerHue, 100, 360);
         HB.stroke(innerHue, 90, 90, 150);
@@ -51,18 +55,35 @@ public class LarinasVisual {
         drawStar(radius, points, innerHue, outerHue);
         HB.strokeWeight(4);
 
-        float starSize = radius + HB.sin(HB.frameCount * 0.1f) * 500 * HB.getAmplitude();
+        float amplitude = HB.getAmplitude();
 
+        float starSize = radius + HB.sin(HB.frameCount * 0.5f) * 500 * HB.getAmplitude();
+       
         drawStar(starSize, points, outerHue, innerHue);
 
-        // Draw the star inner
         drawStar(starSize * 0.5f, points, outerHue, innerHue);
+
+        drawSparkles();
         HB.popMatrix();
+        HB.noLights();
     }
 
-    
-
-    
+    public void drawSparkles(){
+        HB.noStroke();
+        HB.fill(255);
+        float amplitude = HB.getAmplitude();
+        int numSparkles = (int) HB.map(amplitude, 0, 1, 100, 10);
+        Random random = new Random();
+        for (int i = 0; i < numSparkles; i++) {
+            float x = random.nextFloat() * HB.width;
+            float y = random.nextFloat() * HB.height;
+            float sparkleSize = random.nextFloat() * 5;
+            float sparkleBrightness = HB.random(200, 255);
+            HB.fill(255, sparkleBrightness);
+            HB.ellipse(x, y, sparkleSize, sparkleSize);
+        
+        }
+    }
 
     public void drawStar(float radius, int points, float innerHue, float outerHue) {
         float angle = HB.TWO_PI / points;
@@ -97,5 +118,11 @@ public class LarinasVisual {
             float sy = HB.sin(a + starAngle) * innerRadius / 2;
         }
         HB.endShape(HB.CLOSE);
+
+        
+
     }
+
+
 }
+
