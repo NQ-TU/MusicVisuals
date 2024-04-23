@@ -6,7 +6,7 @@ import ie.tudublin.Heartbeat;
 public class PatricksVisual {
 
     Heartbeat HB;
-    Graph graphVisual;
+    // Graph graphVisual;
     Animation animationVisual;
 
     int width, height;
@@ -21,7 +21,7 @@ public class PatricksVisual {
     }
 
     public void renderGraph() {
-        graphVisual.render();
+        // graphVisual.render();
     }
 
     public void renderAnimation() {

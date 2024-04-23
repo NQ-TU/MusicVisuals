@@ -1,7 +1,6 @@
 package C22328351;
 
 import ie.tudublin.VisualException;
-import processing.core.PVector;
 import ie.tudublin.Heartbeat;
 
 public class LarinasVisual {
@@ -11,8 +10,6 @@ public class LarinasVisual {
 
     float radius = 200;
     int points = 5;
-
-    
 
     public LarinasVisual(Heartbeat HB) {
         this.HB = HB;
@@ -59,10 +56,6 @@ public class LarinasVisual {
         drawStar(starSize * 0.5f, points, outerHue, innerHue);
         HB.popMatrix();
     }
-
-    
-
-    
 
     public void drawStar(float radius, int points, float innerHue, float outerHue) {
         float angle = HB.TWO_PI / points;

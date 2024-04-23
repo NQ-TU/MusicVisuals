@@ -13,10 +13,6 @@ public class Heartbeat extends Visual {
     LarinasVisual LarinasVisual;
     PatricksVisual patricksVisuals;
 
-    // Larinas ?
-    public int innerHue;
-    public int outerHue;
-
     public void settings() {
         println("CWD: " + System.getProperty("user.dir"));
         fullScreen(P3D, SPAN);
