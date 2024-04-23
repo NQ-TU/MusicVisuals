@@ -103,7 +103,7 @@ public class LarinasVisual{
         }
 
         //Gets the amplitude of the audio and maps it to the star
-        float amplitude = HB.getAmplitude();
+        //float amplitude = HB.getAmplitude();
         //float radius = this.radius + (amplitude * 200);
 
         float starSize = radius + HB.sin(HB.frameCount * 0.1f) * 500 * HB.getAmplitude();
@@ -202,6 +202,3 @@ public class LarinasVisual{
 
     }
 }
-
-
-

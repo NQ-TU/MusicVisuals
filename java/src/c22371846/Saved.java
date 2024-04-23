@@ -11,7 +11,7 @@ public class Saved
 
     public Saved(Heartbeat HB) {
         this.HB = HB;
-        this.A = new Animation();
+        //this.A = new Animation();
         this.G = new Graph();
     }
 
