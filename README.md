@@ -27,13 +27,13 @@ Run Main.java inside ie\tudublin, this will run our Heartbeat.java file where we
 
 To switch between each persons visuals select 1-X keys. Press R to restart the song and Spacebar to pause the song.
 
--Noels Visuals: You can interact with the stars in the background by hovering the cursor over them. This creates a 'blackhole' effect where they group around the cursor in a circle.
+- Noels Visuals: You can interact with the stars in the background by hovering the cursor over them. This creates a 'blackhole' effect where they group around the cursor in a circle.
 
--Patricks Visuals:
+- atricks Visuals:
 
--Larinas Visuals: 
+- Larinas Visuals: 
 
--Michaels Visuals: 
+- Michaels Visuals: 
 
 # How it works
 
