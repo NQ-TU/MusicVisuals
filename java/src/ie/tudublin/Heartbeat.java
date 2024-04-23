@@ -43,6 +43,8 @@ public class Heartbeat extends Visual {
                 noelsVisual.renderScene();
                 break;
             case 2:
+                noelsVisual.resetCamera();
+                noelsVisual.setDefaultCamera();
                 patricksVisuals.renderAnimation();
                 break;
             case 3:
