@@ -33,6 +33,8 @@ public class LarinasVisual {
         rotX += rotationSpeedX;
         rotY += rotationSpeedY;
 
+        HB.calculateAverageAmplitude();
+
         float innerHue = HB.map(HB.getAmplitude(), 0, 1, 0, 360);
         float outerHue = HB.map(HB.getAmplitude(), 0, 1, 0, 360);
 
