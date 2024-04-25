@@ -59,7 +59,7 @@ public class MichaelsVisuals {
         ps = new ParticleSystem(150);
     }
 
-    private void renderVisualOne() {
+    public void renderVisualOne() {
         mv.beginCamera();
         mv.noFill();
         mv.background(0);
@@ -92,7 +92,7 @@ public class MichaelsVisuals {
         this.State = state;
     }
 
-    private void renderVisualTwo() {
+    public void renderVisualTwo() {
         mv.beginCamera();
         mv.noFill();
         mv.background(0);
