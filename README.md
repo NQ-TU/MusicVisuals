@@ -23,6 +23,17 @@ Student Number: C22533826
 # Description of the assignment
 
 # Instructions
+Run Main.java inside ie\tudublin, this will run our Heartbeat.java file where we handle rendering each persons visual.
+
+To switch between each persons visuals select 1-X keys. Press R to restart the song and Spacebar to pause the song.
+
+- Noels Visuals: You can interact with the stars in the background by hovering the cursor over them. This creates a 'blackhole' effect where they group around the cursor in a circle.
+
+- atricks Visuals:
+
+- Larinas Visuals: 
+
+- Michaels Visuals: 
 
 # How it works
 
