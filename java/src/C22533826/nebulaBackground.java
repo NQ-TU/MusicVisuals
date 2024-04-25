@@ -45,7 +45,7 @@ public class nebulaBackground {
             n.update();
         }
 
-        // Allows interaction between nebulae and particles in starField.
+        // Allows interaction between nebulas and particles in starField.
         nebulaStarInteraction();
     }
 
@@ -66,11 +66,11 @@ public class nebulaBackground {
         }
     }
 
-    // Initialize nebulae at random positions, ensures varied sizes.
+    // Initialize nebulas at random positions, ensures varied sizes.
     public void init_nebulas() {
         for (int i = 0; i < 7; i++) {
             float x = HB.random(0, HB.width);
-            float y = HB.random(0, HB.height / 2.9f);
+            float y = HB.random(0, HB.height / 2.9f); // Draw only on top half of the screen.
             float r = 150 + i * HB.random(50, 200);
             nebulas.add(new Nebula(x, y, r));
         }
@@ -90,13 +90,12 @@ public class nebulaBackground {
             this.xspeed = HB.random(5, 10) * HB.cos(angle);
             this.yspeed = HB.random(5, 10) * HB.sin(angle);
             this.r = r;
-            // this.r = HB.random(120, 500);
         }
 
         public void update() {
             // updates position of a nebula based on amplitude.
             HB.calculateAverageAmplitude();
-            // Adjust speed based on amplitude. Speed multiplier ensures that nebulae move
+            // Adjust speed based on amplitude. Speed multiplier ensures that nebulas move
             // similar to starField.java
             float speedMultiplier = HB.map(HB.getSmoothedAmplitude(), 0, 1, 0, 5);
             x += xspeed * speedMultiplier;
