@@ -29,7 +29,7 @@ public class nebulaBackground {
         // each nebula to give the 'merging effect'.
         HB.loadPixels();
         for (int x = 0; x < HB.width; x++) {
-            for (int y = 0; y < HB.height; y++) {
+            for (int y = 0; y < HB.height / 2f; y++) {
                 float sum = 0;
                 for (Nebula n : nebulas) {
                     float d = HB.dist(x, y, n.x, n.y);
