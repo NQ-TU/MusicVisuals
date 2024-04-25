@@ -65,6 +65,7 @@ public class Animation {
 
             if (HB.keyCode == HB.RIGHT) {
                 HB.triangle(W, H, H, H, i, (HB.getFFT().getBand(i)));
+                HB.triangle(W, H, H, H, i, (HB.getFFT().getBand(i)));
                 HB.fill((cc + off) % 256, HB.mouseX, 255);
             }
 

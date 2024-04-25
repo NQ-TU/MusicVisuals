@@ -13,7 +13,7 @@ public class PatricksVisual {
 
     public PatricksVisual(Heartbeat HB) {
         this.HB = HB;
-        // this.graphVisual = new Graph(HB);
+        //this.graphVisual = new Graph(HB);
         this.animationVisual = new Animation(HB);
 
         this.width = HB.width;

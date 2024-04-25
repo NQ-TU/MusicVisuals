@@ -67,7 +67,7 @@ public class LarinasVisual{
     }
 
     //Draws function that calls every frame
-    public void draw()
+    public void render()
     {
         HB.draw();
 

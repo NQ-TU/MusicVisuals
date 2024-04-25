@@ -3,14 +3,14 @@ package ie.tudublin;
 import C21325616.MichaelsVisuals;
 import C22533826.NoelsVisual;
 import c22371846.PatricksVisual;
-//import C22328351.LarinasVisual;
+import C22328351.LarinasVisual;
 
 public class Heartbeat extends Visual {
 
     int mode = 1;
     NoelsVisual noelsVisual;
     MichaelsVisuals michaelsVisuals;
-    //LarinasVisual LarinasVisual;
+    LarinasVisual LarinasVisual;
     PatricksVisual patricksVisuals;
 
     // Larinas ?
@@ -34,7 +34,7 @@ public class Heartbeat extends Visual {
         noelsVisual = new NoelsVisual(this);
         michaelsVisuals = new MichaelsVisuals(this);
         patricksVisuals = new PatricksVisual(this);
-        //LarinasVisual = new LarinasVisual(this);
+        LarinasVisual = new LarinasVisual(this);
     }
 
     public void draw() {
@@ -49,7 +49,7 @@ public class Heartbeat extends Visual {
                 michaelsVisuals.render();
                 break;
             case 4:
-                //LarinasVisual.draw();
+                LarinasVisual.render();
                 break;
             case 5:
                 // Addtional renderings...
