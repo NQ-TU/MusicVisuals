@@ -13,10 +13,6 @@ public class Heartbeat extends Visual {
     LarinasVisual LarinasVisual;
     PatricksVisual patricksVisuals;
 
-    // Larinas ?
-    public int innerHue;
-    public int outerHue;
-
     public void settings() {
         println("CWD: " + System.getProperty("user.dir"));
         fullScreen(P3D, SPAN);
@@ -43,12 +39,16 @@ public class Heartbeat extends Visual {
                 noelsVisual.renderScene();
                 break;
             case 2:
+                noelsVisual.resetCamera();
+                noelsVisual.setDefaultCamera();
                 patricksVisuals.renderAnimation();
                 break;
             case 3:
                 michaelsVisuals.render();
                 break;
             case 4:
+                noelsVisual.resetCamera();
+                noelsVisual.setDefaultCamera();
                 LarinasVisual.render();
                 break;
             case 5:
@@ -80,4 +80,5 @@ public class Heartbeat extends Visual {
             getAudioPlayer().play();
         }
     }
+
 }

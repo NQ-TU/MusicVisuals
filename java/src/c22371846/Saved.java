@@ -12,7 +12,7 @@ public class Saved
     public Saved(Heartbeat HB) {
         this.HB = HB;
         //this.A = new Animation();
-        this.G = new Graph();
+       // this.G = new Graph();
     }
 
     public void render() {

@@ -9,6 +9,8 @@ public class NoelsVisual {
     Heartbeat HB;
     starField sf;
     terrainNoel tn;
+    heartSun hs;
+    nebulaBackground nb;
 
     int height;
     int width;
@@ -21,13 +23,18 @@ public class NoelsVisual {
     float upX, upY, upZ;
 
     public NoelsVisual(Heartbeat HB) {
+
         // Initialize variables.
         this.HB = HB;
         height = HB.displayHeight;
         width = HB.displayWidth;
+
         // Create new instances of starField and terrainNoel.
         this.sf = new starField(height, width, HB);
         this.tn = new terrainNoel(height, width, HB);
+        this.hs = new heartSun(HB);
+        this.nb = new nebulaBackground(HB, sf);
+
         // Set default camera values.
         setDefaultCamera();
     }
@@ -35,14 +42,21 @@ public class NoelsVisual {
     // Render starField and terrainNoel. Reset camera to ensure that visuals are
     // consistent.
     public void renderScene() {
-        HB.background(0);
+        // HB.background(100);
         resetCamera();
+        HB.noLights();
+
+        nb.render();
+
         sf.render();
         tn.render();
+
+        // resetCamera();
+        // hs.render();
     }
 
     // Reset camera to default values.
-    private void resetCamera() {
+    public void resetCamera() {
         HB.camera(eyeX, eyeY, eyeZ,
                 centerX, centerY, centerZ,
                 upX, upY, upZ);
@@ -50,7 +64,7 @@ public class NoelsVisual {
 
     // Set default camera values, ensures consistency when rendering with other
     // visuals.
-    private void setDefaultCamera() {
+    public void setDefaultCamera() {
         eyeX = HB.width / 2.0f;
         eyeY = HB.height / 2.0f;
         eyeZ = (HB.height / 2.0f) / HB.tan(HB.PI / 6.0f); // FOV is 60 degrees by default.
