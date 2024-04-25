@@ -21,7 +21,7 @@ public class ParticleSystem {
 
         for(int i = 0; i < size * size; i++)
         {
-            particles[i] = new PVector((rand.nextInt(3000 - 200 + 1) + 10), (rand.nextInt(5000 - 200 + 1) + 10), (rand.nextInt(3000 - 200 + 1) + 10));
+            particles[i] = new PVector((rand.nextInt(1500 + 1500 + 1) - 1500), (rand.nextInt(1500  + 1500 + 1) - 1500), (rand.nextInt(1500  + 1500 + 1) - 1500));
         }
     }
 
@@ -32,7 +32,7 @@ public class ParticleSystem {
         {
             if(particles[i].x == 50 && particles[i].y == 50 && particles[i].z == 50)
             {
-                particles[i] = new PVector((rand.nextInt(5000 - 200 + 1) + 10), (rand.nextInt(5000 - 200 + 1) + 10), (rand.nextInt(5000 - 200 + 1) + 10));
+                particles[i] = new PVector((rand.nextInt(1500  + 1500 + 1) - 1500), (rand.nextInt(1500  + 1500 + 1) - 1500), (rand.nextInt(1500  + 1500 + 1) - 1500));
             } else {
                 if(particles[i].x > 50)
                 {
