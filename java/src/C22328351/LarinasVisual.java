@@ -14,10 +14,9 @@ public class LarinasVisual {
 
     static float outerHue;
     static float innerHue;
-    
+
     static int numSparkles = 100;
     static float sparkleSize = 5;
-
 
     public LarinasVisual(Heartbeat HB) {
         this.HB = HB;
@@ -59,7 +58,7 @@ public class LarinasVisual {
         float amplitude = HB.getAmplitude();
 
         float starSize = radius + HB.sin(HB.frameCount * 0.5f) * 500 * HB.getAmplitude();
-       
+
         drawStar(starSize, points, outerHue, innerHue);
 
         drawStar(starSize * 0.5f, points, outerHue, innerHue);
@@ -69,8 +68,7 @@ public class LarinasVisual {
         HB.noLights();
     }
 
-
-    public void drawSparkles(){
+    public void drawSparkles() {
         HB.noStroke();
         HB.fill(255);
         float amplitude = HB.getAmplitude();
@@ -83,10 +81,9 @@ public class LarinasVisual {
             float sparkleBrightness = HB.random(200, 255);
             HB.fill(255, sparkleBrightness);
             HB.ellipse(x, y, sparkleSize, sparkleSize);
-        
+
         }
     }
-
 
     public void drawStar(float radius, int points, float innerHue, float outerHue) {
         float angle = HB.TWO_PI / points;
@@ -122,10 +119,6 @@ public class LarinasVisual {
         }
         HB.endShape(HB.CLOSE);
 
-        
-
     }
 
-
 }
-

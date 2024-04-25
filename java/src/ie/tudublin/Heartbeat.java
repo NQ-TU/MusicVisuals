@@ -7,12 +7,11 @@ import C22328351.LarinasVisual;
 
 public class Heartbeat extends Visual {
 
-    int mode = 4;
+    int mode = 1;
     NoelsVisual noelsVisual;
     MichaelsVisuals michaelsVisuals;
     LarinasVisual LarinasVisual;
     PatricksVisual patricksVisuals;
-
 
     public void settings() {
         println("CWD: " + System.getProperty("user.dir"));
