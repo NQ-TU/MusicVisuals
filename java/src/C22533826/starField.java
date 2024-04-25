@@ -5,12 +5,6 @@ import ie.tudublin.VisualException;
 import processing.core.PVector;
 import java.util.ArrayList;
 
-// 1. Need to rename a few variables to be more appropriate. -Can be worked on.
-// 2. Change to add depth/more colors. -Not attempted yet. (create a nebula affect, where the stars are in a galaxy with stronger/faster pulls towards the center. Potentially new file for isospheres?)
-// 3. Add comments to explain the code better for github. -Can be worked on.
-// 4. Need to refactor render to better fit program/make better use of OOP principles. -DONE.
-// 5. Add a way to interact with the stars. (potentially planets/hearts/ship idea).
-
 public class starField {
 
     int visHeight;
@@ -25,7 +19,7 @@ public class starField {
 
     public starField(int height, int width, Heartbeat HB) {
         // Initialize variables. Setting the height and width of the visual.
-        this.visHeight = HB.floor(height / 2.7f);
+        this.visHeight = HB.floor(height / 2.9f);
         this.visWidth = width;
         this.HB = HB;
         particles = new ArrayList<PVector>();
@@ -40,12 +34,12 @@ public class starField {
         // Handles audio processing for the visual.
         audioHandler();
 
-        HB.background(0);
         HB.stroke(255);
         HB.fill(255, 150);
 
         // Loop through all particles and render them.
         for (PVector p : particles) {
+            HB.strokeWeight(HB.random(1, 5));
             renderParticle(p);
             updateParticlePos(p);
             outOfBoundsCheck(p);

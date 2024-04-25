@@ -4,19 +4,13 @@ import ie.tudublin.VisualException;
 import ddf.minim.analysis.FFT;
 import ie.tudublin.Heartbeat;
 
-// 1. Need to rename a few variables to be more appropriate. -Can be worked on.
-// 2. Refactor old reused code to better fit program. -Done.
-// 3. Add comments to explain the code better for github. -Can be worked on.
-// 4. Use song tempo to adjust the speed of the terrain. -Not attempted yet. (can add like a ship with hearts as its exhaust to give the illusion of navigating the 'city')
-// 5. Add default camera angle, possibly change terrrain to follow camera/object. -Work on.
-
 public class terrainNoel {
 
     Heartbeat HB;
 
     int cols, rows;
-    int scale = 30; // Determines how large the cubes are, 30 after experimentating a bit.
-    // Played around with these values to get the best result.
+    int scale = 30; // Determines how large the cubes are.
+
     int w = 2600;
     int h = 1600;
 
@@ -41,6 +35,7 @@ public class terrainNoel {
     public void render() {
         HB.stroke(255);
         HB.noFill();
+        HB.strokeWeight(0);
         generate_Terrain();
 
         // Get desired angle for terrain.
@@ -67,12 +62,12 @@ public class terrainNoel {
     }
 
     public void generate_Terrain() {
+        HB.calculateAverageAmplitude();
         flying -= 0.025f;
         yOffset = flying;
 
-        // Set the middle and outer bounds for the terrain.
-        // To-do: Change these values to potentially be smaller the wider out, to give
-        // the illusion of a planet.
+        // Variables to determine terrain bounds, where it is 'flat', and where it is
+        // 'hilly'.
         float middleMax = cols / 3.3f * 2;
         int outerStart = (int) (cols * 0.1);
         int outerEnd = (int) (cols * 0.9);
@@ -80,12 +75,20 @@ public class terrainNoel {
         for (int y = 0; y < rows; y++) {
             float xoff = 0;
             for (int x = 0; x < cols; x++) {
+                // Using amplitude and noise to generate terrain. Creates a pseduorandom terrain
+                // initially and we add the amplitude to it for interactivity with the song.
+                float noiseVal = HB.noise(xoff, yOffset);
+                float amplitude = HB.getSmoothedAmplitude();
+                float noiseHeight = HB.map(noiseVal, 0, 1, -100, 100);
+                float amplitudeHeight = amplitude * 200;
+                float height = noiseHeight + amplitudeHeight;
+
                 if (x > cols / 2.4f && x < middleMax) {
-                    cubeTerrain[x][y] = HB.map(HB.noise(xoff, yOffset), 0, 1, -75, 5);
+                    cubeTerrain[x][y] = HB.map(HB.noise(xoff, yOffset), 0, 1, -50, -10) + (height) / 2.5f;
                 } else if (x < outerStart || x > outerEnd) {
-                    cubeTerrain[x][y] = HB.map(HB.noise(xoff, yOffset), 0, 1, -150, 400);
+                    cubeTerrain[x][y] = HB.map(HB.noise(xoff, yOffset), 0, 1, -100, 200) + height;
                 } else {
-                    cubeTerrain[x][y] = HB.map(HB.noise(xoff, yOffset), 0, 1, -150, 300);
+                    cubeTerrain[x][y] = HB.map(HB.noise(xoff, yOffset), 0, 1, -100, 150) + height;
                 }
                 xoff += 0.2;
             }
@@ -107,5 +110,9 @@ public class terrainNoel {
         float hue = 180; // Constant hue.
         float brightness = HB.map(cubeTerrain[x][y], -100, 100, 10, 90); // Map brightness based on height.
         HB.fill(hue, 100, brightness);
+        // Uncomment below for a more colorful terrain, matches heart visual/colors.
+        // HB.calculateAverageAmplitude();
+        // float volume = HB.getSmoothedAmplitude();
+        // float hue = HB.map(volume, 0, 1, 0, 255);
     }
 }

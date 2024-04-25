@@ -9,6 +9,7 @@ public class NoelsVisual {
     Heartbeat HB;
     starField sf;
     terrainNoel tn;
+    heartSun hs;
 
     int height;
     int width;
@@ -21,13 +22,17 @@ public class NoelsVisual {
     float upX, upY, upZ;
 
     public NoelsVisual(Heartbeat HB) {
+
         // Initialize variables.
         this.HB = HB;
         height = HB.displayHeight;
         width = HB.displayWidth;
+
         // Create new instances of starField and terrainNoel.
         this.sf = new starField(height, width, HB);
         this.tn = new terrainNoel(height, width, HB);
+        this.hs = new heartSun(HB);
+
         // Set default camera values.
         setDefaultCamera();
     }
@@ -35,11 +40,15 @@ public class NoelsVisual {
     // Render starField and terrainNoel. Reset camera to ensure that visuals are
     // consistent.
     public void renderScene() {
-        HB.background(0);
+        HB.background(100);
         resetCamera();
         HB.noLights();
+
         sf.render();
         tn.render();
+
+        resetCamera();
+        hs.render();
     }
 
     // Reset camera to default values.
