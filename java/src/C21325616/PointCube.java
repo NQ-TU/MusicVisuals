@@ -20,7 +20,7 @@ public class PointCube {
     private int size = 0;
     Random rand = new Random();
 
-    int[] Distortion = { 2, 3, 4, 5, 6, 6, 5, 4, 3, 2 };
+    int[] Distortion = { 1, 2, 3, 4, 5, 5, 4, 3, 2, 1 };
 
     PointCube(int size)
     {

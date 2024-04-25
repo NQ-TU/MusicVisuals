@@ -24,7 +24,7 @@ public class Heartbeat extends Visual {
         colorMode(HSB);
         setFrameSize(512);
         startMinim();
-        loadAudio("Heartbeat.mp3");
+        loadAudio("/Users/michaelferents/Desktop/OOPAssignment/MusicVisuals/java/data/Heartbeat.mp3");
         getAudioPlayer().play();
         // startListening();
         // noCursor();

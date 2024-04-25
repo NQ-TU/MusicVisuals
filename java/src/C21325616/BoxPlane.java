@@ -24,6 +24,8 @@ public class BoxPlane {
 
     Side currentSide;
 
+    PVector origin;
+
     public void init(Side side)
     {
         this.currentSide = side;
