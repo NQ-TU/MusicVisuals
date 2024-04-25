@@ -39,10 +39,13 @@ public class Heartbeat extends Visual {
 
     public void draw() {
         switch (mode) {
+
+            
             case 0:
                 getAudioPlayer().pause();
                 MenuScreen.renderMenu();
                 break;
+
             case 1:
                 getAudioPlayer().play();
                 noelsVisual.renderScene();
@@ -61,6 +64,13 @@ public class Heartbeat extends Visual {
                 getAudioPlayer().play();
                 noelsVisual.resetCamera();
                 noelsVisual.setDefaultCamera();
+                LarinasVisual.draw();
+                break;
+            case 5:
+                noelsVisual.resetCamera();
+                noelsVisual.setDefaultCamera();
+                patricksVisuals.renderGraph();
+
                 michaelsVisuals.renderVisualTwo();
                 break;
             case 5:
@@ -71,6 +81,7 @@ public class Heartbeat extends Visual {
                 break;
             case 6:
                 // Addtional renderings...
+
                 break;
             default:
                 break;

@@ -24,7 +24,7 @@ public class LarinasVisual {
         rotX = rotY = 0;
     }
 
-    public void render() {
+    public void draw() {
         HB.background(0);
         HB.pushMatrix();
         HB.lights();
@@ -55,7 +55,9 @@ public class LarinasVisual {
         drawStar(radius, points, innerHue, outerHue);
         HB.strokeWeight(4);
 
-        float amplitude = HB.getAmplitude();
+        //Gets the amplitude of the audio and maps it to the star
+        //float amplitude = HB.getAmplitude();
+        //float radius = this.radius + (amplitude * 200);
 
         float starSize = radius + HB.sin(HB.frameCount * 0.5f) * 500 * HB.getAmplitude();
 
