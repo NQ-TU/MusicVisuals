@@ -35,6 +35,7 @@ public class Heartbeat extends Visual {
 
     public void draw() {
         switch (mode) {
+            
             case 1:
                 noelsVisual.renderScene();
                 break;
@@ -49,10 +50,12 @@ public class Heartbeat extends Visual {
             case 4:
                 noelsVisual.resetCamera();
                 noelsVisual.setDefaultCamera();
-                LarinasVisual.render();
+                LarinasVisual.draw();
                 break;
             case 5:
-                // Addtional renderings...
+                noelsVisual.resetCamera();
+                noelsVisual.setDefaultCamera();
+                patricksVisuals.renderGraph();
                 break;
             default:
                 break;

@@ -1,6 +1,5 @@
 package c22371846;
 
-import ie.tudublin.VisualException;
 import ie.tudublin.Heartbeat;
 
 public class Animation {
@@ -70,7 +69,7 @@ public class Animation {
             }
 
             if (HB.keyCode == HB.UP) {
-                HB.circle(W, H, (HB.getFFT().getBand(i) * 6));
+                HB.circle(W, H, (HB.getFFT().getBand(i) * 12));
                 HB.fill((cc + off) % 256, HB.mouseX, 255);
             }
 

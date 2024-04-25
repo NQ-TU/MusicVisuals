@@ -6,14 +6,14 @@ import ie.tudublin.Heartbeat;
 public class PatricksVisual {
 
     Heartbeat HB;
-    // Graph graphVisual;
+    Graph graphVisual;
     Animation animationVisual;
 
     int width, height;
 
     public PatricksVisual(Heartbeat HB) {
         this.HB = HB;
-        //this.graphVisual = new Graph(HB);
+        this.graphVisual = new Graph(HB);
         this.animationVisual = new Animation(HB);
 
         this.width = HB.width;
@@ -21,7 +21,7 @@ public class PatricksVisual {
     }
 
     public void renderGraph() {
-        // graphVisual.render();
+        graphVisual.render();
     }
 
     public void renderAnimation() {
