@@ -10,6 +10,7 @@ public class NoelsVisual {
     starField sf;
     terrainNoel tn;
     heartSun hs;
+    nebulaBackground nb;
 
     int height;
     int width;
@@ -32,6 +33,7 @@ public class NoelsVisual {
         this.sf = new starField(height, width, HB);
         this.tn = new terrainNoel(height, width, HB);
         this.hs = new heartSun(HB);
+        this.nb = new nebulaBackground(HB, sf);
 
         // Set default camera values.
         setDefaultCamera();
@@ -40,15 +42,17 @@ public class NoelsVisual {
     // Render starField and terrainNoel. Reset camera to ensure that visuals are
     // consistent.
     public void renderScene() {
-        HB.background(100);
+        // HB.background(100);
         resetCamera();
         HB.noLights();
+
+        nb.render();
 
         sf.render();
         tn.render();
 
-        resetCamera();
-        hs.render();
+        // resetCamera();
+        // hs.render();
     }
 
     // Reset camera to default values.
