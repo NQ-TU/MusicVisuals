@@ -25,8 +25,10 @@ public class MichaelsVisuals {
     float lastX;
     float lastY;
 
-    int State = 0;
+    int State = 1;
     boolean first = true;
+
+    float rotation=0;
 
     public MichaelsVisuals(Heartbeat mv)
     {
@@ -55,12 +57,13 @@ public class MichaelsVisuals {
         cube[3].init(Side.NegativeX);
         cube[4].init(Side.NegativeY);
         cube[5].init(Side.NegativeZ);
+
     }
 
     private void initializeVisualTwo()
     {
         pc = new PointCube(10);
-        ps = new ParticleSystem(150);
+        ps = new ParticleSystem(300);
     }
 
     private void renderVisualOne()
@@ -69,7 +72,7 @@ public class MichaelsVisuals {
         mv.noFill();
         mv.background(0);
         //camera.setCamera(mv);
-        mv.camera(-150, -200, -150, 0, 0, 0, 0.0f, 1.0f, 0.0f);
+        mv.camera(-150, -400 * PApplet.cos(PApplet.radians(rotation)), -400 * PApplet.sin(PApplet.radians(rotation)), 100, 100, 100, 0.0f, 1.0f, 0.0f);
         mv.directionalLight(100, 0, 300, -1, 1, -1);
         mv.pointLight(0, 50, 300, 100 , 0, -100);
         mv.pointLight(0, 50, 300, -100, 0, 100);
@@ -94,6 +97,7 @@ public class MichaelsVisuals {
             cube[i].render(mv);
         }
         mv.endCamera();
+        rotation++;
     }
 
     public void setState(int state)
@@ -107,8 +111,7 @@ public class MichaelsVisuals {
         mv.noFill();
         mv.background(0);
         //camera.setCamera(mv);
-        mv.camera(-150, -150, -150, 0, 0, 0, 0.0f, 1.0f, 0.0f);
-        
+        mv.camera(-100, -100  * PApplet.cos(PApplet.radians(rotation)), -100  * PApplet.sin(PApplet.radians(rotation)), 100, 100, 100, 0.0f, 1.0f, 0.0f);
         pc.update(mv);
         pc.render(mv);
         ps.render(mv);
@@ -118,13 +121,14 @@ public class MichaelsVisuals {
         mv.noStroke();
         //mv.lights();
         mv.fill(255);
-        mv.translate(-50, -50, -50);
+        mv.translate(50, 50, 50);
         mv.calculateAverageAmplitude();
         System.out.println(mv.getAmplitude());
         mv.sphere(100 * mv.getAmplitude());
         mv.popMatrix();
 
         mv.endCamera();
+        rotation++;
     }
 
     public void render()

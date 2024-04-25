@@ -21,7 +21,7 @@ public class Heartbeat extends Visual {
         // noCursor();
         setFrameSize(256);
         startMinim();
-        loadAudio("Heartbeat.mp3");
+        loadAudio("/Users/michaelferents/Desktop/OOPAssignment/MusicVisuals/java/data/Heartbeat.mp3");
         getAudioPlayer().play();
         // startListening();
         noelsVisual = new NoelsVisual();
