@@ -21,7 +21,7 @@ Student Number: C22533826
 - Check out the WaveForm and AudioBandsVisual for examples of how to call the Processing functions from other classes that are not subclasses of PApplet
 
 # Description of the assignment
-This project is the combined work of 4 team members, to create visuals that are interactive with our song, [Heartbeat - Childish Gambino.](https://youtu.be/uN8VQiKgRrU?si=vwhKmCmouqWreZ4a) We analysed audio elements of the song and then, using different methods visualised them using processing in Java.
+This project is the combined work of 4 team members, to create visuals that are interactive with our song, [Heartbeat - Childish Gambino.](https://youtu.be/uN8VQiKgRrU?si=vwhKmCmouqWreZ4a) We analysed audio elements of the song and then, using different methods visualised them using Processing in Java, with the help of the minim library.
 
 # Instructions
 Run Main.java inside ie\tudublin, this will run our Heartbeat.java file where we handle rendering each persons visual.
@@ -48,8 +48,12 @@ It is possible to interact with the stars in the background (starField) by hover
 
 # How it works
 Before we began to code our project we agreed on a format to follow, which would keep our programs consistent, easy to understand and simple to diagnose. 
+
 Each team member has their own folder, labelled with their student number. Inside these folders contain each persons visuals and a 'main' file, nameVisual.java, which would handle calling/combining visuals. This format prevented any individual bugs from affecting other peoples code and follows good OOP principles.
 ##### Heartbeat.java
+Heartbeat.java is our main sketch, any global elements in our program such as screen sizing, color mode, frame size, and audio playing (pausing, restarting) is initialised here. 
+
+Heartbeat.java inherits all the functionality and properties defined in Visual.java which is an abstract class that itself extends PApplet from the Processing libary. Visual.java acts as a framework for creating audio visualisations using the Minim library, providing many methods to handle audio input/output, calculating frequency bands.. etc.
 
 
 # What I am most proud of in the assignment
