@@ -74,7 +74,7 @@ Inside the second visual I have a sphere which changes size depending on the amp
 # What I am most proud of in the assignment
 
 Michael Ferents: 
-I am most proud of the commitment I made to learning how the java proccessing library works and to try and place myself out of my comfort zone to explore and implement various features using what the library provides, I am also proud of the collaboration and commitment that the entire team displayed each week, working towards completing the project and helping each other in figuring out how to approach certain aspects of our visuals.
+I am most proud of the commitment I made to learning how the java proccessing library works and try to place myself out of my comfort zone and explore a myriad of artistic styles, implementing various features using what the library provides, I am also proud of the collaboration and commitment that the entire team displayed each week, working towards completing the project and helping each other in figuring out how to approach certain aspects of our visuals.
 
 # Markdown Tutorial
 
