@@ -40,7 +40,20 @@ public void renderScene() {
 ```
 It is possible to interact with the stars in the background (starField) by hovering the cursor over them, creating an effect where the stars group around the cursor. If you have a powerful device you can increase the number of nebula by changing nebulaCount.
 
-- Patricks Visuals:
+- Patricks Visuals: When you find my visual by going through the switch modes, my visual begins with a blank black screen. But when you use the arrow keys, magic happens.
+
+You will see 4 shapes:
+
+Up arrow: Circles
+Down arrow: Cubes
+Left arrow: Squares
+Right arrow: Triangles
+
+
+You’ll see a visual where the shape colours appear differently & rotate in an aesthetic manner.
+
+If you move your mouse to the very right, the colours will disappear & the shape will appear white. Nice little effect.
+
 
 - Larinas Visuals: 
 
