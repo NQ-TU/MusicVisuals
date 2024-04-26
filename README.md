@@ -21,11 +21,12 @@ Student Number: C22533826
 - Check out the WaveForm and AudioBandsVisual for examples of how to call the Processing functions from other classes that are not subclasses of PApplet
 
 # Description of the assignment
+This project is the combined work of 4 team members, to create visuals that are interactive with our song, [Heartbeat - Childish Gambino.](https://youtu.be/uN8VQiKgRrU?si=vwhKmCmouqWreZ4a) We analysed audio elements of the song and then, using different methods visualised them using processing in Java.
 
 # Instructions
 Run Main.java inside ie\tudublin, this will run our Heartbeat.java file where we handle rendering each persons visual.
 
-To switch between each persons visuals select 1-X keys. Press R to restart the song and Spacebar to pause the song.
+To switch between each persons visuals select 1-6 keys or 0 to enter the menu. Press R to restart the song and Spacebar to pause the song.
 
 - Noels Visuals: There are 3 visuals being rendered. To view anyone by itself simply comment out the unwanted ones:
 ```Java
@@ -46,6 +47,10 @@ It is possible to interact with the stars in the background (starField) by hover
 - Michaels Visuals: 
 
 # How it works
+Before we began to code our project we agreed on a format to follow, which would keep our programs consistent, easy to understand and simple to diagnose. 
+Each team member has their own folder, labelled with their student number. Inside these folders contain each persons visuals and a 'main' file, nameVisual.java, which would handle calling/combining visuals. This format prevented any individual bugs from affecting other peoples code and follows good OOP principles.
+##### Heartbeat.java
+
 
 # What I am most proud of in the assignment
 
