@@ -11,6 +11,7 @@ public class nebulaBackground {
     starField sf;
     // Create an arraylist of nebula.
     ArrayList<Nebula> nebulas;
+    int nebulaCount = 7;
 
     public nebulaBackground(Heartbeat HB, starField sf) {
         // Initialize variables.
@@ -68,7 +69,7 @@ public class nebulaBackground {
 
     // Initialize nebulas at random positions, ensures varied sizes.
     public void init_nebulas() {
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < nebulaCount; i++) {
             float x = HB.random(0, HB.width);
             float y = HB.random(0, HB.height / 2.9f); // Draw only on top half of the screen.
             float r = 150 + i * HB.random(50, 200);

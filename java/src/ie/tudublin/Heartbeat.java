@@ -24,7 +24,7 @@ public class Heartbeat extends Visual {
         colorMode(HSB);
         setFrameSize(512);
         startMinim();
-        loadAudio("/Users/michaelferents/Desktop/OOPAssignment/MusicVisuals/java/data/Heartbeat.mp3");
+        loadAudio("Heartbeat.mp3");
         getAudioPlayer().play();
         // startListening();
         // noCursor();
@@ -70,7 +70,8 @@ public class Heartbeat extends Visual {
                 LarinasVisual.render();
                 break;
             case 6:
-                // Addtional renderings...
+                getAudioPlayer().play();
+                patricksVisuals.renderGraph();
                 break;
             default:
                 break;

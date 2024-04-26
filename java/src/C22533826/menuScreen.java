@@ -21,5 +21,6 @@ public class menuScreen {
                 HB.height / 2 - 50);
         HB.text("For Michael's Visual press 3 for Cube visual and 4 for Particle visual.", HB.width / 2, HB.height / 2);
         HB.text("Press 5 for Larina's Visual", HB.width / 2, HB.height / 2 + 50);
+        HB.text("Press 6 for Patricks's Graph Visual", HB.width / 2, HB.height / 2 + 100);
     }
 }

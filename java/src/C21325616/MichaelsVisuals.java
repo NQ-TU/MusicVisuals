@@ -28,11 +28,10 @@ public class MichaelsVisuals {
     int State = 1;
     boolean first = true;
 
-    float rotation=0;
+    float rotation = 0;
 
-    public MichaelsVisuals(Heartbeat mv)
-    {
-        this.mv = mv; 
+    public MichaelsVisuals(Heartbeat mv) {
+        this.mv = mv;
 
         width = mv.displayWidth;
         height = mv.displayHeight;
@@ -41,13 +40,11 @@ public class MichaelsVisuals {
         initializeVisualTwo();
     }
 
-    private void initializeVisualOne()
-    {
+    private void initializeVisualOne() {
 
         cube = new BoxPlane[6];
 
-        for(int i = 0; i < 6; i++)
-        {
+        for (int i = 0; i < 6; i++) {
             cube[i] = new BoxPlane();
         }
 
@@ -60,58 +57,53 @@ public class MichaelsVisuals {
 
     }
 
-    private void initializeVisualTwo()
-    {
+    private void initializeVisualTwo() {
         pc = new PointCube(10);
         ps = new ParticleSystem(300);
     }
 
-    private void renderVisualOne()
-    {
+    public void renderVisualOne() {
         mv.beginCamera();
         mv.noFill();
         mv.background(0);
-        //camera.setCamera(mv);
-        mv.camera(-150, -400 * PApplet.cos(PApplet.radians(rotation)), -400 * PApplet.sin(PApplet.radians(rotation)), 100, 100, 100, 0.0f, 1.0f, 0.0f);
+        // camera.setCamera(mv);
+        mv.camera(-150, -400 * PApplet.cos(PApplet.radians(rotation)), -400 * PApplet.sin(PApplet.radians(rotation)),
+                100, 100, 100, 0.0f, 1.0f, 0.0f);
         mv.directionalLight(100, 0, 300, -1, 1, -1);
-        mv.pointLight(0, 50, 300, 100 , 0, -100);
+        mv.pointLight(0, 50, 300, 100, 0, -100);
         mv.pointLight(0, 50, 300, -100, 0, 100);
-        //mv.rotate(PApplet.atan2(dir.y, dir.x));
-        //rotate2D(dir, PApplet.radians(3));
-        /* 
-        mv.translate(50, 50, 0);
-        mv.rotateX(-PConstants.PI/6);
-        mv.rotateY(PConstants.PI/3);
-        */
-        //mv.box(45);
-        //ico.render(mv);
-        if(mv.frameCount % 5 == 0)
-        {
-            for(int i = 0; i < 6; i++)
-            {
+        // mv.rotate(PApplet.atan2(dir.y, dir.x));
+        // rotate2D(dir, PApplet.radians(3));
+        /*
+         * mv.translate(50, 50, 0);
+         * mv.rotateX(-PConstants.PI/6);
+         * mv.rotateY(PConstants.PI/3);
+         */
+        // mv.box(45);
+        // ico.render(mv);
+        if (mv.frameCount % 5 == 0) {
+            for (int i = 0; i < 6; i++) {
                 cube[i].update(mv);
             }
         }
-        for(int i = 0; i < 6; i++)
-        {
+        for (int i = 0; i < 6; i++) {
             cube[i].render(mv);
         }
         mv.endCamera();
         rotation++;
     }
 
-    public void setState(int state)
-    {
+    public void setState(int state) {
         this.State = state;
     }
 
-    private void renderVisualTwo()
-    {
+    public void renderVisualTwo() {
         mv.beginCamera();
         mv.noFill();
         mv.background(0);
-        //camera.setCamera(mv);
-        mv.camera(-100, -100  * PApplet.cos(PApplet.radians(rotation)), -100  * PApplet.sin(PApplet.radians(rotation)), 100, 100, 100, 0.0f, 1.0f, 0.0f);
+        // camera.setCamera(mv);
+        mv.camera(-100, -100 * PApplet.cos(PApplet.radians(rotation)), -100 * PApplet.sin(PApplet.radians(rotation)),
+                100, 100, 100, 0.0f, 1.0f, 0.0f);
         pc.update(mv);
         pc.render(mv);
         ps.render(mv);
@@ -119,7 +111,7 @@ public class MichaelsVisuals {
 
         mv.pushMatrix();
         mv.noStroke();
-        //mv.lights();
+        // mv.lights();
         mv.fill(255);
         mv.translate(50, 50, 50);
         mv.calculateAverageAmplitude();
@@ -131,13 +123,12 @@ public class MichaelsVisuals {
         rotation++;
     }
 
-    public void render()
-    {
-        if(State == 0)
+    public void render() {
+        if (State == 0)
             renderVisualOne();
 
-        if(State == 1)
+        if (State == 1)
             renderVisualTwo();
     }
-    
+
 }

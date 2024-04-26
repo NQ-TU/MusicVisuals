@@ -27,9 +27,19 @@ Run Main.java inside ie\tudublin, this will run our Heartbeat.java file where we
 
 To switch between each persons visuals select 1-X keys. Press R to restart the song and Spacebar to pause the song.
 
-- Noels Visuals: You can interact with the stars in the background by hovering the cursor over them. This creates a 'blackhole' effect where they group around the cursor in a circle.
+- Noels Visuals: There are 3 visuals being rendered. To view anyone by itself simply comment out the unwanted ones:
+```Java
+public void renderScene() {
+        resetCamera();
+        HB.noLights();
+        // nb.render(); example to remove nebula effect.
+        sf.render();
+        tn.render();
+    }
+```
+It is possible to interact with the stars in the background (starField) by hovering the cursor over them, creating an effect where the stars group around the cursor. If you have a powerful device you can increase the number of nebula by changing nebulaCount.
 
-- atricks Visuals:
+- Patricks Visuals:
 
 - Larinas Visuals: 
 

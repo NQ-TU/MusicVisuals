@@ -25,9 +25,7 @@ public class starField {
         particles = new ArrayList<PVector>();
 
         // Create particles at random positions.
-        for (int i = 0; i < numParticles; i++) {
-            particles.add(new PVector(HB.random(visWidth), HB.random(visHeight)));
-        }
+        init_particles();
     }
 
     public void render() {
@@ -88,6 +86,13 @@ public class starField {
             pushDirection.normalize();
             pushDirection.mult(pushStrength);
             p.add(pushDirection);
+        }
+    }
+
+    public void init_particles() {
+        // Create particles at random positions.
+        for (int i = 0; i < numParticles; i++) {
+            particles.add(new PVector(HB.random(visWidth), HB.random(visHeight)));
         }
     }
 
