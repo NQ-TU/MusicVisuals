@@ -55,6 +55,14 @@ Heartbeat.java is our main sketch, any global elements in our program such as sc
 
 Heartbeat.java inherits all the functionality and properties defined in Visual.java which is an abstract class that itself extends PApplet from the Processing libary. Visual.java acts as a framework for creating audio visualisations using the Minim library, providing many methods to handle audio input/output, calculating frequency bands.. etc.
 
+We import and create objects of our classes, initialising instances of them inside our *setup()* method. In our *draw()* method we use a switch statement to display different visuals, providing a menu screen too with instructions.
+##### NoelsVisual.java
+Talk about main class and then how terrain + particles/nebula were implemented.
+##### PatricksVisual.java
+
+##### LarinasVisual.java
+
+##### MichaelsVisual.java
 
 # What I am most proud of in the assignment
 
