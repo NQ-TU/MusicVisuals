@@ -45,8 +45,9 @@ It is possible to interact with the stars in the background (starField) by hover
 - Larinas Visuals: 
 
 - Michaels Visuals:
-- There are Two visuals to which you can select to render with either setting the state variable using the function setState() inside MichaelsVisual.java file or you can call either renderVisualOne() or renderVisualTwo().
-- You can also increase the amount of particles in the second visual by changing a value inside the parameter, when initializing the ParticleSystem class, the value you set squared will be the amount of particle, generally over 400 will require a desktop and would be difficult to run on a standard laptop.
+There are Two visuals to which you can select to render with either setting the state variable using the function setState() inside MichaelsVisual.java file or you can call either renderVisualOne() or renderVisualTwo().
+
+You can also increase the amount of particles in the second visual by changing a value inside the parameter, when initializing the ParticleSystem class, the value you set squared will be the amount of particle, generally over 400 will require a desktop and would be difficult to run on a standard laptop.
 
 # How it works
 Before we began to code our project we agreed on a format to follow, which would keep our programs consistent, easy to understand and simple to diagnose. 
@@ -65,6 +66,9 @@ Talk about main class and then how terrain + particles/nebula were implemented.
 ##### LarinasVisual.java
 
 ##### MichaelsVisual.java
+Inside the first visual I created a Box class which stores the position and dimensions of each cube inside a PVector and created a 2 Dimensional Array that stores a face of the cube in a BoxPlane Class, and so inside my MichaelsVisuals class I create six instances of the BoxPlane Class for each side of the cube, with the inside of the cube being hollow, using the AudioBuffer object I set the dimensions of the cubes to respond to it, increasing either the width or height depending on which side faces outwards of the bigger cube.
+
+Inside the second visual I have a sphere which changes size depending on the amplitude, and similarly to how I impletented the big cube comprised of little cubes in the first visual I create six walls of points which renders a line when cycling through each point of adjacent points creating a mesh which i add a little extra to the direction that faces outwards of the sphere which lies in the center of those six walls, the mesh changes depending on the audio buffer similarly to the first visual, and I have a ParticleSystem class which stores an array of PVectors which act as the positions of particles, when initializing the class I set the values inside the PVectors randomly from -1500 to 1500 in the x, y and z coordinates, and with each draw call each particles position slowly gets closer to the sphere, creating an effect as if the sphere is sucking in everything around it, when the particle reaches the sphere i set its position randomly again and the process repeats.
 
 # What I am most proud of in the assignment
 
