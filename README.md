@@ -44,7 +44,9 @@ It is possible to interact with the stars in the background (starField) by hover
 
 - Larinas Visuals: 
 
-- Michaels Visuals: 
+- Michaels Visuals:
+- There are Two visuals to which you can select to render with either setting the state variable using the function setState() inside MichaelsVisual.java file or you can call either renderVisualOne() or renderVisualTwo().
+- You can also increase the amount of particles in the second visual by changing a value inside the parameter, when initializing the ParticleSystem class, the value you set squared will be the amount of particle, generally over 400 will require a desktop and would be difficult to run on a standard laptop.
 
 # How it works
 Before we began to code our project we agreed on a format to follow, which would keep our programs consistent, easy to understand and simple to diagnose. 
