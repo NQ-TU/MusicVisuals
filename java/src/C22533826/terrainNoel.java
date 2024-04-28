@@ -1,7 +1,6 @@
 package C22533826;
 
 import ie.tudublin.VisualException;
-import ddf.minim.analysis.FFT;
 import ie.tudublin.Heartbeat;
 
 public class terrainNoel {

@@ -29,9 +29,6 @@ public class starField {
     }
 
     public void render() {
-        // Handles audio processing for the visual.
-        audioHandler();
-
         HB.stroke(255);
         HB.fill(255, 150);
 
@@ -71,7 +68,7 @@ public class starField {
         if (p.y < 0) {
             p.y = visHeight;
         } else if (p.y > visHeight) {
-            p.y = 0;
+            p.y = visHeight / 2.9f;
         }
     }
 
@@ -94,16 +91,5 @@ public class starField {
         for (int i = 0; i < numParticles; i++) {
             particles.add(new PVector(HB.random(visWidth), HB.random(visHeight)));
         }
-    }
-
-    // Handles audio processing for the visual.
-    private void audioHandler() {
-        HB.calculateAverageAmplitude();
-        try {
-            HB.calculateFFT();
-        } catch (VisualException e) {
-            e.printStackTrace();
-        }
-        HB.calculateFrequencyBands();
     }
 }
