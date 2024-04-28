@@ -94,6 +94,9 @@ Inside the second visual I have a sphere which changes size depending on the amp
 
 # What I am most proud of in the assignment
 - Noel McCarthy:
+
+I am really happy with how the terrain is generated and looks. I wanted to create a visual similar to images of "synthwaves" but with my own spin on it, using cubes to create the terrain. I really like the "flying" affect and the user can imagine many different scenes, as the color may be changed easily using the hue variable. This means the user can imaine they are navigating through a highrise city, over a wavey ocean, desert dunes or hilly fields. 
+I took a lot of inspiration in my visuals from TheCodingTrain, most significant of which is the nebulaBackground. This uses the concept of icosurfaces, which merges together points in proximity to each other. Had i more time i would've liked to change the colors so they represented nebula clouds, making them a more passive background feature, however I am still incredibly happy with how they turned out especially with how they interact with the particles. 
 - Patrick Akinsowon:
 - Larina Yu:
 - Michael Ferents: 
