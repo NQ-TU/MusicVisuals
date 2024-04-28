@@ -97,7 +97,19 @@ Inside the second visual I have a sphere which changes size depending on the amp
 
 I am really happy with how the terrain is generated and looks. I wanted to create a visual similar to images of "synthwaves" but with my own spin on it, using cubes to create the terrain. I really like the "flying" affect and the user can imagine many different scenes, as the color may be changed easily using the hue variable. This means the user can imaine they are navigating through a highrise city, over a wavey ocean, desert dunes or hilly fields. 
 I took a lot of inspiration in my visuals from TheCodingTrain, most significant of which is the nebulaBackground. This uses the concept of icosurfaces, which merges together points in proximity to each other. Had i more time i would've liked to change the colors so they represented nebula clouds, making them a more passive background feature, however I am still incredibly happy with how they turned out especially with how they interact with the particles. 
-- Patrick Akinsowon:
+
+
+- Patrick Akinsowon: 
+Really happy with how the assignment turned out. Followed the concept of throwing things at the wall and picking was sticks. Turns out that it can be the best approach method sometimes. I liked all the shapes in my visual but I think the square one could've looked a bit better. Maybe I could've tried another shape thinking about it now. 
+
+It's unfortunate, but I had the background and the colours of the shapes change automatically. But I guess as I was working on it, it seemed that it was gone. I tried to get it to work again, but never got it back. But still happy with the end result.
+
+With more time, I would've tried to add more than one shape going at the same time. For example, I'd have 2 trangle visuals going at the same time in inverse. One on the left, one on the right. Maybe I'd have them going in contrasting colours. But as it is, I'm happy with the work I've done.
+
+The graph was pretty simple and I wish I could've improved it more. The original idea was to have cubes going across the screen. I tried this using a 2D array but didn't get it to work, so I had to deal with what I had.
+
+
+
 - Larina Yu:
 - Michael Ferents: 
 I am most proud of the commitment I made to learning how the java proccessing library works and try to place myself out of my comfort zone and explore a myriad of artistic styles, implementing various features using what the library provides, I am also proud of the collaboration and commitment that the entire team displayed each week, working towards completing the project and helping each other in figuring out how to approach certain aspects of our visuals.
