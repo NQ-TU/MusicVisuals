@@ -15,7 +15,7 @@
 
 # Description of the assignment
 This project is the combined work of 4 team members, to create visuals that are interactive with our song, [Heartbeat - Childish Gambino.](https://youtu.be/uN8VQiKgRrU?si=vwhKmCmouqWreZ4a) We analysed audio elements of the song and then, using different methods visualised them using Processing in Java, with the help of the minim library. Here is a [youtube](https://www.youtube.com/watch?v=32F3Vw8pXfI) demo of our project. 
-- [Noels Visual](data/NoelsVisual.jpg)
+- [Noels Visual](images/NoelsVisual.jpg)
 
 # Instructions
 Run Main.java inside ie\tudublin, this will run our Heartbeat.java file where we handle rendering each persons visual.
