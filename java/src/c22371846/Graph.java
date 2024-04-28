@@ -1,10 +1,5 @@
 package c22371846;
 
-import ddf.minim.AudioBuffer;
-import ddf.minim.AudioInput;
-import ddf.minim.AudioPlayer;
-import ddf.minim.Minim;
-import ddf.minim.analysis.FFT;
 import ie.tudublin.Heartbeat;
 
 public class Graph {

@@ -85,6 +85,17 @@ Really rough draft, will be more technical when i am home from work 🙌
 Talk about main class and then how terrain + particles/nebula were implemented.
 ##### PatricksVisual.java
 
+My visual works using 3 files: *PatricksVisuals.java*, Graph.java and Animation.java.
+
+*Main.java* will run the *Heartbeat.java* file and in Heartbeat.java, it has a switch section that will call each of our visuals using the numbers on the keyboard.
+
+*PatricksVisuals.java*: This file calls the *Animation.java and the Graph.java* and each has its own constructor to call the render functions in each respective file. These are called in the *Hearbeat.java* file.
+
+*Animation.java*: This file inherits Heartbeat. Heartbeat inherits Visuals.java, which has all the code for getting the FFT, AudioBuffer, Amplitude, PApplet etc. This saves us from writing all the code again and again. I just have to make sure that I have 'HB' before calling anything from the Visual.java file. For the animation to work, I have a rotateX and rotateY with the variable 'angle' incrementing at 0.01f. I also have a translate at x=100, y=0. You can make it go white if you move the mouse all the way to the left.
+
+*Graph.java*: Graph.java follows the same principles as the Animation.java, in that it can call all the functions from Visual.java. For this one, it uses the FFT to calculate the frequencies of the audio and displays it via rectangles that can change size if you move the mouse from right to left. 
+
+
 ##### LarinasVisual.java
 
 ##### MichaelsVisual.java
