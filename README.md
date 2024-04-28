@@ -1,17 +1,10 @@
 # Music Visualiser Project
-Name: Michael Ferents
-Student Number: C21325616
-
-Name: Patrick Akinsowon
-Student Number: C22371846
-
-
-Name: Larina Yu
-Student Number: C22328351
-
-Name: Noel McCarthy
-Student Number: C22533826
-
+| Name | Student Number |
+|-----------|-----------|
+| Noel McCarthy | C22533826 |
+| Michael Ferents | C21325616 |
+| Patrick Akinsowon | C22371846 |
+| Larina Yu | C22328351 |
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
@@ -21,7 +14,8 @@ Student Number: C22533826
 - Check out the WaveForm and AudioBandsVisual for examples of how to call the Processing functions from other classes that are not subclasses of PApplet
 
 # Description of the assignment
-This project is the combined work of 4 team members, to create visuals that are interactive with our song, [Heartbeat - Childish Gambino.](https://youtu.be/uN8VQiKgRrU?si=vwhKmCmouqWreZ4a) We analysed audio elements of the song and then, using different methods visualised them using Processing in Java, with the help of the minim library.
+This project is the combined work of 4 team members, to create visuals that are interactive with our song, [Heartbeat - Childish Gambino.](https://youtu.be/uN8VQiKgRrU?si=vwhKmCmouqWreZ4a) We analysed audio elements of the song and then, using different methods visualised them using Processing in Java, with the help of the minim library. Here is a [youtube](https://www.youtube.com/watch?v=32F3Vw8pXfI) demo of our project. 
+- [Noels Visual](data/NoelsVisual.jpg)
 
 # Instructions
 Run Main.java inside ie\tudublin, this will run our Heartbeat.java file where we handle rendering each persons visual.
@@ -74,15 +68,17 @@ Heartbeat.java inherits all the functionality and properties defined in Visual.j
 
 We import and create objects of our classes, initialising instances of them inside our *setup()* method. In our *draw()* method we use a switch statement to display different visuals, providing a menu screen too with instructions.
 ##### NoelsVisual.java
-My scene comprises of 3 files, each handling different visualisations of our song. 
+My scene comprises of 3 files, each handling different visualisations of our song. Inside my *render()* function we call each of the following files.
 
-*terrainNoel.java file creates an array to store values, which use the noise function and the amplitude of the song combined to give a pseudorandom assignment to each grid location (h&w/scale), creating a 'smooth' terrain which will react with the amplitude of the song. The color is a determined by the height at each grid position, higher corresponds to a brighter cube. The terrain is drawn in 2D space, iterating through each array value, drawing a cube with its value; translate and rotate are used to give it a "3D" affect. 
+- *terrainNoel.java* file creates an array to store values, which use the noise function and the amplitude of the song combined to give a pseudorandom assignment to each grid location (h&w/scale), creating a 'smooth' terrain which will react with the amplitude of the song. The color is a determined by the height at each grid position, higher corresponds to a brighter cube, see *color_Terrain()*. The terrain is drawn in 2D space, iterating through each array value, drawing a cube with its value; translate and rotate are used to give it a "3D" affect, see *render()* & *render_Terrain()*. I created 3 'bounds' for the cubes to spawn in, so that the appearance of a road is present, which is checked in *generate_Terrain()*.
 
-*starField()* populates an <arrayList> of PVectors, each representing a particle. The speed of these particles is determined by the amplitude, speeding up as it increases and slowing with it too. Mouse interaction is applied by using the distance from the mouse position and mapping a speed/direction to any particle inside that distance, creating an almost blackhole affect. 
+- *starField()* populates an <arrayList> of PVectors, each representing a particle, see *init_particles()*. The speed of these particles is determined by the amplitude, speeding up as it increases and slowing with it too, along side the noise function, see *updateParticlePos()*. Mouse interaction is applied by using the distance from the mouse position and mapping a speed/direction to any particle inside that distance, creating an almost blackhole affect, see *mouseInteraction()*. *outOfBoundsCheck()* checks whether a particle in inside the bounds of the desired screen.
 
-*nebulaBackground.java* follows a very similar format to *starField.java* but instead creates an <arrayList> of nebulas, a class inside our file. A nebula is a point given a "random" radius and spawning point, moving around the screen. By loading the sketchs pixel array, we can map to it a color, determined by the distance of each nebula so that when they are in proximity to each other they appear as though they are merging together. I used the code for mouse interaction previously to apply that same effect to the particles, creating an instance of starField.java inside nebulaBackground.java, and then interating through the arrayList, for each nebula. This invovled a lot of processing power so its advised to reduce the number of nebula if you encounter any performance issues. 
-Really rough draft, will be more technical when i am home from work 🙌
-Talk about main class and then how terrain + particles/nebula were implemented.
+- *nebulaBackground.java* follows a very similar format to *starField.java* but instead creates an <arrayList> of nebulas, a class inside our file. A nebula is a point given a "random" radius and spawning point, moving around the screen, see *init_nebulas()*. By loading the sketchs pixel array, we can map to it a color, determined by the distance of each nebula so that when they are in proximity to each other they appear as though they are merging together, see *render()*. I used the code for mouse interaction previously to apply that same effect to the particles, creating an instance of *starField.java* inside *nebulaBackground.java*, and then interating through the arrayList, for each nebula, see *nebulaStarInteraction()*. This invovled a lot of processing power so its advised to reduce the number of nebula if you encounter any performance issues. 
+
+- *menuScreen()* simple menu screen that draws instructions to the screen.
+
+- *heartSun()* initial visual, uses the amplitude of the song to make a heart pulsate and change colors. Did not use in final visualization as I was not happy with how it looked.
 ##### PatricksVisual.java
 
 My visual works using 3 files: *PatricksVisuals.java*, Graph.java and Animation.java.
@@ -107,8 +103,7 @@ Inside the second visual I have a sphere which changes size depending on the amp
 - Noel McCarthy:
 
 I am really happy with how the terrain is generated and looks. I wanted to create a visual similar to images of "synthwaves" but with my own spin on it, using cubes to create the terrain. I really like the "flying" affect and the user can imagine many different scenes, as the color may be changed easily using the hue variable. This means the user can imaine they are navigating through a highrise city, over a wavey ocean, desert dunes or hilly fields. 
-I took a lot of inspiration in my visuals from TheCodingTrain, most significant of which is the nebulaBackground. This uses the concept of icosurfaces, which merges together points in proximity to each other. Had i more time i would've liked to change the colors so they represented nebula clouds, making them a more passive background feature, however I am still incredibly happy with how they turned out especially with how they interact with the particles. 
-
+I took a lot of inspiration in my visuals from TheCodingTrain, most significant of which is the nebulaBackground. This uses the concept of isosurfaces, which merges together points in proximity to each other, but in 2D space. Had i more time i would've liked to change the colors so they represented nebula clouds, making them a more passive background feature, however I am still incredibly happy with how they turned out especially with how they interact with the particles. I am also proud of the Heartbeat.java file with how it is structured. I learned a huge amount about the processing library and really enjoyed the collaberation aspect, understanding how others code, diagnosing issues as a team, and using github. 
 
 - Patrick Akinsowon: 
 Really happy with how the assignment turned out. Followed the concept of throwing things at the wall and picking was sticks. Turns out that it can be the best approach method sometimes. I liked all the shapes in my visual but I think the square one could've looked a bit better. Maybe I could've tried another shape thinking about it now. 
