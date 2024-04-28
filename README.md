@@ -28,7 +28,7 @@ Run Main.java inside ie\tudublin, this will run our Heartbeat.java file where we
 
 To switch between each persons visuals select 1-6 keys or 0 to enter the menu. Press R to restart the song and Spacebar to pause the song.
 
-- Noels Visuals: There are 3 visuals being rendered. To view anyone by itself simply comment out the unwanted ones:
+- Noels Visuals: There are 3 visuals being rendered. To view anyone by itself simply comment out the unwanted ones inside the *renderScene()* method. 
 ```Java
 public void renderScene() {
         resetCamera();
@@ -38,7 +38,7 @@ public void renderScene() {
         tn.render();
     }
 ```
-It is possible to interact with the stars in the background (starField) by hovering the cursor over them, creating an effect where the stars group around the cursor. If you have a powerful device you can increase the number of nebula by changing nebulaCount.
+It is possible to interact with the stars in the background (starField) by hovering the cursor over them, creating an effect where the stars group around the cursor. If you have a powerful device you can increase the number of nebula by changing nebulaCount. 
 
 - Patricks Visuals: When you find my visual by going through the switch modes, my visual begins with a blank black screen. But when you use the arrow keys, magic happens.
 
@@ -74,6 +74,10 @@ Heartbeat.java inherits all the functionality and properties defined in Visual.j
 
 We import and create objects of our classes, initialising instances of them inside our *setup()* method. In our *draw()* method we use a switch statement to display different visuals, providing a menu screen too with instructions.
 ##### NoelsVisual.java
+My scene comprises of 3 files, each handling different visualisations of our song. The terrainNoel.java file creates an array to store values, which use the noise function and the amplitude of the song combined to give a pseudorandom assignment to each grid location (h&w/scale), creating a 'smooth' terrain which will react with the amplitude of the song. The color is a determined by the height at each grid position, higher corresponds to a brighter cube. The terrain is drawn in 2D space, iterating through each array value, drawing a cube with its value; translate and rotate are used to give it a "3D" affect. 
+*starField()* populates an <arrayList> of PVectors, each representing a particle. The speed of these particles is determined by the amplitude, speeding up as it increases and slowing with it too. Mouse interaction is applied by using the distance from the mouse position and mapping a speed/direction to any particle inside that distance, creating an almost blackhole affect. 
+*nebulaBackground.java* follows a very similar format to *starField.java* but instead creates an <arrayList> of nebulas, a class inside our file. A nebula is a point given a "random" radius and spawning point, moving around the screen. By loading the sketchs pixel array, we can map to it a color, determined by the distance of each nebula so that when they are in proximity to each other they appear as though they are merging together. I used the code for mouse interaction previously to apply that same effect to the particles, creating an instance of starField.java inside nebulaBackground.java, and then interating through the arrayList, for each nebula. This invovled a lot of processing power so its advised to reduce the number of nebula if you encounter any performance issues. 
+Really rough draft, will be more technical when i am home from work 🙌
 Talk about main class and then how terrain + particles/nebula were implemented.
 ##### PatricksVisual.java
 
@@ -85,8 +89,10 @@ Inside the first visual I created a Box class which stores the position and dime
 Inside the second visual I have a sphere which changes size depending on the amplitude, and similarly to how I impletented the big cube comprised of little cubes in the first visual I create six walls of points which renders a line when cycling through each point of adjacent points creating a mesh which i add a little extra to the direction that faces outwards of the sphere which lies in the center of those six walls, the mesh changes depending on the audio buffer similarly to the first visual, and I have a ParticleSystem class which stores an array of PVectors which act as the positions of particles, when initializing the class I set the values inside the PVectors randomly from -1500 to 1500 in the x, y and z coordinates, and with each draw call each particles position slowly gets closer to the sphere, creating an effect as if the sphere is sucking in everything around it, when the particle reaches the sphere i set its position randomly again and the process repeats.
 
 # What I am most proud of in the assignment
-
-Michael Ferents: 
+- Noel McCarthy:
+- Patrick Akinsowon:
+- Larina Yu:
+- Michael Ferents: 
 I am most proud of the commitment I made to learning how the java proccessing library works and try to place myself out of my comfort zone and explore a myriad of artistic styles, implementing various features using what the library provides, I am also proud of the collaboration and commitment that the entire team displayed each week, working towards completing the project and helping each other in figuring out how to approach certain aspects of our visuals.
 
 # Markdown Tutorial
