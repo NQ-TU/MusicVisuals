@@ -74,9 +74,9 @@ My scene comprises of 3 files, each handling different visualisations of our son
 
 - *terrainNoel.java* file creates an array to store values, which use the noise function and the amplitude of the song combined to give a pseudorandom assignment to each grid location (h&w/scale), creating a 'smooth' terrain which will react with the amplitude of the song. The color is a determined by the height at each grid position, higher corresponds to a brighter cube, see *color_Terrain()*. The terrain is drawn in 2D space, iterating through each array value, drawing a cube with its value; translate and rotate are used to give it a "3D" affect, see *render()* & *render_Terrain()*. I created 3 'bounds' for the cubes to spawn in, so that the appearance of a road is present, which is checked in *generate_Terrain()*.
 
-- *starField()* populates an <arrayList> of PVectors, each representing a particle, see *init_particles()*. The speed of these particles is determined by the amplitude, speeding up as it increases and slowing with it too, along side the noise function, see *updateParticlePos()*. Mouse interaction is applied by using the distance from the mouse position and mapping a speed/direction to any particle inside that distance, creating an almost blackhole affect, see *mouseInteraction()*. *outOfBoundsCheck()* checks whether a particle in inside the bounds of the desired screen.
+- *starField()* populates an arrayList of PVectors, each representing a particle, see *init_particles()*. The speed of these particles is determined by the amplitude, speeding up as it increases and slowing with it too, along side the noise function, see *updateParticlePos()*. Mouse interaction is applied by using the distance from the mouse position and mapping a speed/direction to any particle inside that distance, creating an almost blackhole affect, see *mouseInteraction()*. *outOfBoundsCheck()* checks whether a particle in inside the bounds of the desired screen.
 
-- *nebulaBackground.java* follows a very similar format to *starField.java* but instead creates an <arrayList> of nebulas, a class inside our file. A nebula is a point given a "random" radius and spawning point, moving around the screen, see *init_nebulas()*. By loading the sketchs pixel array, we can map to it a color, determined by the distance of each nebula so that when they are in proximity to each other they appear as though they are merging together, see *render()*. I used the code for mouse interaction previously to apply that same effect to the particles, creating an instance of *starField.java* inside *nebulaBackground.java*, and then interating through the arrayList, for each nebula, see *nebulaStarInteraction()*. This invovled a lot of processing power so its advised to reduce the number of nebula if you encounter any performance issues. 
+- *nebulaBackground.java* follows a very similar format to *starField.java* but instead creates an arrayList of nebulas, a class inside our file. A nebula is a point given a "random" radius and spawning point, moving around the screen, see *init_nebulas()*. By loading the sketchs pixel array, we can map to it a color, determined by the distance of each nebula so that when they are in proximity to each other they appear as though they are merging together, see *render()*. I used the code for mouse interaction previously to apply that same effect to the particles, creating an instance of *starField.java* inside *nebulaBackground.java*, and then interating through the arrayList, for each nebula, see *nebulaStarInteraction()*. This invovles a lot of processing power so its advised to reduce the number of nebula if you encounter any performance issues. 
 
 - *menuScreen()* simple menu screen that draws instructions to the screen.
 
@@ -121,72 +121,3 @@ The graph was pretty simple and I wish I could've improved it more. The original
 - Larina Yu:
 - Michael Ferents: 
 I am most proud of the commitment I made to learning how the java proccessing library works and try to place myself out of my comfort zone and explore a myriad of artistic styles, implementing various features using what the library provides, I am also proud of the collaboration and commitment that the entire team displayed each week, working towards completing the project and helping each other in figuring out how to approach certain aspects of our visuals.
-
-# Markdown Tutorial
-
-This is *emphasis*
-
-This is a bulleted list
-
-- Item
-- Item
-
-This is a numbered list
-
-1. Item
-1. Item
-
-This is a [hyperlink](http://bryanduggan.org)
-
-# Headings
-## Headings
-#### Headings
-##### Headings
-
-This is code:
-
-```Java
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-So is this without specifying the language:
-
-```
-public void render()
-{
-	ui.noFill();
-	ui.stroke(255);
-	ui.rect(x, y, width, height);
-	ui.textAlign(PApplet.CENTER, PApplet.CENTER);
-	ui.text(text, x + width * 0.5f, y + height * 0.5f);
-}
-```
-
-This is an image using a relative URL:
-
-![An image](images/p8.png)
-
-This is an image using an absolute URL:
-
-![A different image](https://bryanduggandotorg.files.wordpress.com/2019/02/infinite-forms-00045.png?w=595&h=&zoom=2)
-
-This is a youtube video:
-
-[![YouTube](http://img.youtube.com/vi/J2kHSSFA4NU/0.jpg)](https://www.youtube.com/watch?v=J2kHSSFA4NU)
-
-This is a table:
-
-| Heading 1 | Heading 2 |
-|-----------|-----------|
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-|Some stuff | Some more stuff in this column |
-
