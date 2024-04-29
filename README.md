@@ -44,7 +44,10 @@ You’ll see a visual where the shape colours appear differently & rotate in an 
 If you move your mouse to the very right, the colours will disappear & the shape will appear white. Nice little effect.
 
 
-- Larinas Visuals: 
+- Larinas Visuals:
+There is one visual that runs based on the amplitude of the music. Variables such as, size, rotation, colour and layering are calculated based on the amplitude of the music. The visual is made up of two layers of 5 triangles, which have been folded inwards to create a flower effect. There is also a layer in the centre of the flower to give the visual some dimesion. When the amplitude increases, the layers increment in size, and you can see them growing as there is an incremental growth effect, rather than the triangles just extending.
+
+I also added a sparkle effect, made up of randomly placed ellipses on the rational path of the visual. This helps the viewer to see the path of rotation of the flower, as once the amplitude of the music picks up, the rotations become very fast and difficult to see that diretion that they are rotating in. The ellipses are also based on the amplitude of the music and they grow and become less frequent with the music.
 
 - Michaels Visuals:
   
@@ -89,6 +92,14 @@ My visual works using 3 files: *PatricksVisuals.java*, Graph.java and Animation.
 
 ##### LarinasVisual.java
 
+My visual uses only one file, due the the layering effect of the visual. I used two for loops in the same file, as I was afraid that the seperate files would cause separation issues in the visual and that the actual visual would not be as cohesive. 
+
+The file *Main.java* will run the visuals that are called in the *Heartbeat.java* file. This file contains a key pressed function that allows us to assign each visual a key number that will be shown on the screen once it is pressed, each key is a assigned a visual that is called in the switch function. 
+
+There are two parts to my visual, the flower part and the sparkle effect. The flower part consists of three layers, made up of 5 triangles in each layer. Each layer is a different size and have different stroke weights, to add to the glass effect. The layers increment based on the amplitude of the music, meaning that instead of each triangle extending to create a larger triangles, it is visibly growing, you can see the strokes of how the layers are growing. The layers are coloured using the HSB colour spectrum, the colour of the flower also reacts to the amplitude of the music, starting at red and gradually ending up at a blue for the most intense amplitudes of the music. The rotation of the flower is also based on the amplitude of the song, the rotation gains speed based on the amplitude of the music, when the music picks up, the speed of the rotation increases to mimick the amplitude of the music. I used two for loops in order to create the layers of the flowers.
+
+The sparkle effect was placed in order to fill some of the plain background, the sparkles follow the route of rotation. Meaning that whatever rotation path is being used, the viewer can see what way the flower is rotating. The sparkles are made of randomly assigned ellipses and they grow with the amplitude of the music and also become more scattered and larger in size. I used a for loop to assign random ellipses to be in the rotational path of the flower.
+
 ##### MichaelsVisual.java
 Inside the first visual I created a Box class which stores the position and dimensions of each cube inside a PVector and created a 2 Dimensional Array that stores a face of the cube in a BoxPlane Class, and so inside my MichaelsVisuals class I create six instances of the BoxPlane Class for each side of the cube, with the inside of the cube being hollow, using the AudioBuffer object I set the dimensions of the cubes to respond to it, increasing either the width or height depending on which side faces outwards of the bigger cube.
 
@@ -112,5 +123,10 @@ The graph was pretty simple and I wish I could've improved it more. The original
 
 
 - Larina Yu:
+
+I am most proud of the way I was able to create the folded effect of the star bases. Once I saw what the star looked folded, I decided against doing a 3-D netted effect and create a layered flower visual. I was pleased that the flower petals grew incrementally, rather than the entire petal extending. I was happy with how the flower looked recognisable as a flower, but it looked more like it was made of stained glass. I felt like this fit the narrative of the song more. I would have liked the sparkle effect to be more dynamic and visually impressive. 
+
+I would have liked to create something in the background, however due to how much the visual grows, I believed that the background would get too cluttered if I added in anything else that works with the amplitude of the song. If i have more time, I would have tried to make the background of the visual more visually pleasing. I would have also liked to make the visual more interactive with the viewer.
+
 - Michael Ferents: 
 I am most proud of the commitment I made to learning how the java proccessing library works and try to place myself out of my comfort zone and explore a myriad of artistic styles, implementing various features using what the library provides, I am also proud of the collaboration and commitment that the entire team displayed each week, working towards completing the project and helping each other in figuring out how to approach certain aspects of our visuals.
